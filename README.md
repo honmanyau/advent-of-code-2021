@@ -35,7 +35,7 @@ There a `template` directory in `src` for getting started quickly with opinionat
 Example usage:
 
 ```sh
-cp -r src/template src/day-3
+DAY=3 npm run new-day
 ```
 
 
@@ -43,26 +43,30 @@ cp -r src/template src/day-3
 
 The [Mocha](https://mochajs.org) test framework is used to write the tests in this repository. A few primitive shell scripts are set up in [`package.json`](./package.json) for excuting tests.
 
-### Running a Single File
-
-```sh
-# From the root directory
-npm run ts-node src/day-1/index.ts
-```
-
 ### Getting Solutions for a Challenge
 
 The code that outpus the solutions contained in each challenge's `index.ts` file only runs when the `SOLVE` environment variable is set to `true`. Use the `solve` script to get the solutions for a challenge:
 
 ```sh
-npm run solve src/day-1/index.ts
+# In the root directory
+DAY=1 npm run solve
 ```
 
 ### Running Tests for a Single Challenge
 
 ```sh
-npm run test src/day-1/index.spec.ts
+# In the root directory
+DAY=1 npm run test
 ```
+
+### Running a Single File
+
+You probably don't need this unless you want to do something strange and weird.
+
+```sh
+npm run ts-node src/day-1/index.ts
+```
+
 
 ## Formatting
 

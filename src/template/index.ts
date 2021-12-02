@@ -49,7 +49,7 @@ export function processFile(file: string): number {
 }
 
 /**
- * The solver function for Part 1 of of the challenge.
+ * The solver function for part 1 of of the challenge.
  * @param {number[]} input An array that represents the puzzle's input.
  * @returns {number} The solution to Part 1 of the puzzle!
  */
@@ -58,7 +58,7 @@ export function part1Solver(input: number[]): number {
 }
 
 /**
- * The solver function for Part 2 of of the challenge.
+ * The solver function for prt 2 of of the challenge.
  * @param {number[]} input An array that represents the puzzle's input.
  * @returns {number} The solution to Part 2 of the puzzle!
  */

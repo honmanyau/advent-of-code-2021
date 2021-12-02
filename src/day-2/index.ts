@@ -87,5 +87,24 @@ export function part1Solver(input: InputFile): number {
  * @returns {number} The solution to Part 2 of the puzzle!
  */
 export function part2Solver(input: InputFile): number {
-    return null;
+    let aim = 0;
+    let x = 0;
+    let y = 0;
+
+    for (const line of input) {
+        const [direction, distance] = line;
+
+        if (direction === "forward") {
+            x += distance;
+            y += aim * distance;
+        } else if (direction === "up") {
+            aim -= distance;
+        } else if (direction === "down") {
+            aim += distance;
+        } else {
+            throw new Error("Something went horribly wrong!");
+        }
+    }
+
+    return x * y;
 }

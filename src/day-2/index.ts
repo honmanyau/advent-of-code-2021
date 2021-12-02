@@ -64,23 +64,18 @@ export function part1Solver(input: InputFile): number {
     let x = 0;
     let y = 0;
 
-    const moves = {
-        forward: (d: number) => {
-            x += d;
-        },
-        up: (d: number) => {
-            y -= d;
-        },
-        down: (d: number) => {
-            y += d;
-        },
-    };
-
     for (const line of input) {
         const [direction, distance] = line;
-        const move = moves[direction as Direction];
 
-        move(distance);
+        if (direction === "forward") {
+            x += distance;
+        } else if (direction === "up") {
+            y -= distance;
+        } else if (direction === "down") {
+            y += distance;
+        } else {
+            throw new Error("Something went horribly wrong!");
+        }
     }
 
     return x * y;

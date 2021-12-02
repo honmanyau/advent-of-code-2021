@@ -24,7 +24,7 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
         [
             `The solutions for Day ${DAY_NUM}: ${CHALLENGE_TITLE} are:`,
             `  * Part 1: ${green(solutionPart1)}`,
-            `  * Part 2: ${green(solutionPart2)}`,
+            // `  * Part 2: ${green(solutionPart2)}`,
         ].join("\n")
     );
 }

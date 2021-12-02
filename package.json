@@ -1,34 +1,34 @@
 {
-  "name": "advent-of-code",
-  "version": "1.0.0",
-  "description": "Solutions for Advent of Code",
-  "main": "index.js",
-  "scripts": {
-    "format": "prettier --write .",
-    "solve": "SOLVE=true ts-node",
-    "test": "mocha -r ts-node/register --file",
-    "ts-node": "ts-node"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/honmanyau/advent-of-code.git"
-  },
-  "keywords": [
-    "advent-of-code"
-  ],
-  "author": "Honman Yau",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/honmanyau/advent-of-code/issues"
-  },
-  "homepage": "https://github.com/honmanyau/advent-of-code#readme",
-  "devDependencies": {
-    "@types/mocha": "^9.0.0",
-    "@types/node": "^16.11.11",
-    "eslint": "^8.3.0",
-    "mocha": "^9.1.3",
-    "prettier": "^2.5.0",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.5.2"
-  }
+    "name": "advent-of-code",
+    "version": "1.0.0",
+    "description": "Solutions for Advent of Code",
+    "main": "index.js",
+    "scripts": {
+        "format": "prettier --write .",
+        "solve": "SOLVE=true ts-node",
+        "test": "mocha -r ts-node/register --file",
+        "ts-node": "ts-node"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/honmanyau/advent-of-code.git"
+    },
+    "keywords": [
+        "advent-of-code"
+    ],
+    "author": "Honman Yau",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/honmanyau/advent-of-code/issues"
+    },
+    "homepage": "https://github.com/honmanyau/advent-of-code#readme",
+    "devDependencies": {
+        "@types/mocha": "^9.0.0",
+        "@types/node": "^16.11.11",
+        "eslint": "^8.3.0",
+        "mocha": "^9.1.3",
+        "prettier": "^2.5.0",
+        "ts-node": "^10.4.0",
+        "typescript": "^4.5.2"
+    }
 }

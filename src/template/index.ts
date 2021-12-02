@@ -7,30 +7,30 @@ import { green } from "../utilities";
 // == Config ==
 // ============
 export const DAY_NUM = (() => {
-  throw "DAY_NUM not set.";
+    throw "DAY_NUM not set.";
 })();
 export const CHALLENGE_TITLE = (() => {
-  throw "CHALLENGE_TITLE not set.";
+    throw "CHALLENGE_TITLE not set.";
 })();
 
 // ==========
 // == Main ==
 // ==========
 if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
-  const challengePathname = path.resolve(__dirname, "./input.txt");
-  const challengeFile = fs.readFileSync(challengePathname, "utf-8");
-  const input = processFile(challengeFile);
+    const challengePathname = path.resolve(__dirname, "./input.txt");
+    const challengeFile = fs.readFileSync(challengePathname, "utf-8");
+    const input = processFile(challengeFile);
 
-  const solutionPart1 = part1Solver(input);
-  const solutionPart2 = part2Solver(input);
+    const solutionPart1 = part1Solver(input);
+    const solutionPart2 = part2Solver(input);
 
-  console.log(
-    [
-      `The solutions for Day ${DAY_NUM}: ${CHALLENGE_TITLE} are:`,
-      `  * Part 1: ${green(solutionPart1)}`,
-      `  * Part 2: ${green(solutionPart2)}`,
-    ].join("\n")
-  );
+    console.log(
+        [
+            `The solutions for Day ${DAY_NUM}: ${CHALLENGE_TITLE} are:`,
+            `  * Part 1: ${green(solutionPart1)}`,
+            `  * Part 2: ${green(solutionPart2)}`,
+        ].join("\n")
+    );
 }
 
 // ===============
@@ -43,9 +43,9 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
  * @returns {number[]} An array where each line is an entry of the challenge.
  */
 export function processFile(file: string): number {
-  throw "Implement function for processing example and input files!";
-  // Example:
-  // return file.trim().split("\n").map(Number);
+    throw "Implement function for processing example and input files!";
+    // Example:
+    // return file.trim().split("\n").map(Number);
 }
 
 /**
@@ -54,7 +54,7 @@ export function processFile(file: string): number {
  * @returns {number} The solution to Part 1 of the puzzle!
  */
 export function part1Solver(input: number[]): number {
-  return null;
+    return null;
 }
 
 /**
@@ -63,5 +63,5 @@ export function part1Solver(input: number[]): number {
  * @returns {number} The solution to Part 2 of the puzzle!
  */
 export function part2Solver(input: number[]): number {
-  return null;
+    return null;
 }

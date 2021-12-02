@@ -5,9 +5,9 @@
  * @returns {string} A string that is colour-formatted for the console.
  */
 export function green(input: any) {
-  const text = input.toString();
+    const text = input.toString();
 
-  return "\x1b[32m" + text + "\x1b[0m";
+    return "\x1b[32m" + text + "\x1b[0m";
 }
 
 /**
@@ -17,14 +17,14 @@ export function green(input: any) {
  * @param {function} callback The callback function to be timed.
  */
 export function logDuration(name: string, callback: () => void) {
-  const start = process.hrtime.bigint();
-  const result = callback();
-  const end = process.hrtime.bigint();
-  const elapsedMs = Number(end - start) / 1e6;
+    const start = process.hrtime.bigint();
+    const result = callback();
+    const end = process.hrtime.bigint();
+    const elapsedMs = Number(end - start) / 1e6;
 
-  console.log(`${name} finished in ${green(elapsedMs)} ms.\n`);
+    console.log(`${name} finished in ${green(elapsedMs)} ms.\n`);
 
-  return result;
+    return result;
 }
 
 /**
@@ -34,9 +34,9 @@ export function logDuration(name: string, callback: () => void) {
  * @returns {string} A string that is colour-formatted for the console.
  */
 export function red(input: any) {
-  const text = input.toString();
+    const text = input.toString();
 
-  return "\x1b[31m" + text + "\x1b[0m";
+    return "\x1b[31m" + text + "\x1b[0m";
 }
 
 /**
@@ -46,7 +46,7 @@ export function red(input: any) {
  * @returns {string} A string that is colour-formatted for the console.
  */
 export function yellow(input: any) {
-  const text = input.toString();
+    const text = input.toString();
 
-  return "\x1b[33m" + text + "\x1b[0m";
+    return "\x1b[33m" + text + "\x1b[0m";
 }

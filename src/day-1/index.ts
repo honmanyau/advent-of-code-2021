@@ -13,20 +13,20 @@ export const CHALLENGE_TITLE = "Sonar Sweep";
 // == Main ==
 // ==========
 if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
-  const challengePathname = path.resolve(__dirname, "./input.txt");
-  const challengeFile = fs.readFileSync(challengePathname, "utf-8");
-  const input = processFile(challengeFile);
+    const challengePathname = path.resolve(__dirname, "./input.txt");
+    const challengeFile = fs.readFileSync(challengePathname, "utf-8");
+    const input = processFile(challengeFile);
 
-  const solutionPart1 = part1Solver(input);
-  const solutionPart2 = part2Solver(input);
+    const solutionPart1 = part1Solver(input);
+    const solutionPart2 = part2Solver(input);
 
-  console.log(
-    [
-      `The solutions for Day ${DAY_NUM}: ${CHALLENGE_TITLE} are:`,
-      `  * Part 1: ${green(solutionPart1)}`,
-      `  * Part 2: ${green(solutionPart2)}`,
-    ].join("\n")
-  );
+    console.log(
+        [
+            `The solutions for Day ${DAY_NUM}: ${CHALLENGE_TITLE} are:`,
+            `  * Part 1: ${green(solutionPart1)}`,
+            `  * Part 2: ${green(solutionPart2)}`,
+        ].join("\n")
+    );
 }
 
 // ===============
@@ -39,7 +39,7 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
  * @returns {number[]} An array where each line is an entry of the challenge.
  */
 export function processFile(file: string): number[] {
-  return file.trim().split("\n").map(Number);
+    return file.trim().split("\n").map(Number);
 }
 
 /**
@@ -48,15 +48,15 @@ export function processFile(file: string): number[] {
  * @returns {number} The solution to Part 1 of the puzzle!
  */
 export function part1Solver(input: number[]): number {
-  let increasedCount = 0;
+    let increasedCount = 0;
 
-  for (let i = 1; i < input.length; i++) {
-    if (input[i] > input[i - 1]) {
-      increasedCount++;
+    for (let i = 1; i < input.length; i++) {
+        if (input[i] > input[i - 1]) {
+            increasedCount++;
+        }
     }
-  }
 
-  return increasedCount;
+    return increasedCount;
 }
 
 /**
@@ -65,13 +65,13 @@ export function part1Solver(input: number[]): number {
  * @returns {number} The solution to Part 2 of the puzzle!
  */
 export function part2Solver(input: number[]): number {
-  let increasedCount = 0;
+    let increasedCount = 0;
 
-  for (let i = 3; i < input.length; i++) {
-    if (input[i] > input[i - 3]) {
-      increasedCount++;
+    for (let i = 3; i < input.length; i++) {
+        if (input[i] > input[i - 3]) {
+            increasedCount++;
+        }
     }
-  }
 
-  return increasedCount;
+    return increasedCount;
 }

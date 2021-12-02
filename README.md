@@ -5,6 +5,7 @@ This repository contains my solutions for [Advent of Code](https://adventofcode.
 ## Table of Contents
 
 -   [Installation](#installation)
+-   [Creating a New Solution](#creating-a-new-solution)
 -   [Running and Testing](#runing-and-testing)
     -   [Running a Single File](#running-a-single-file)
     -   [Getting The Solutions for a Challenge](#getting-the-solutions-for-a-challenge)
@@ -25,6 +26,18 @@ cd advent-of-code-2021
 # Install the required dependencies with NPM
 npm install
 ```
+
+
+## Creating a New Solution
+
+There a `template` directory in `src` for getting started quickly with opinionated copypasta.
+
+Example usage:
+
+```sh
+cp -r src/template src/day-3
+```
+
 
 ## Running and Testing
 

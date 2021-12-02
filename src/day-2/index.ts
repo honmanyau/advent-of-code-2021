@@ -32,8 +32,8 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
 // ===========
 // == Types ==
 // ===========
-type InputLine = [string, number];
-type InputFile = InputLine[];
+export type InputLine = [string, number];
+export type InputFile = InputLine[];
 
 // ===============
 // == Functions ==

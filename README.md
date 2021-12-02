@@ -7,9 +7,9 @@ This repository contains my solutions for [Advent of Code](https://adventofcode.
 -   [Installation](#installation)
 -   [Creating a New Solution](#creating-a-new-solution)
 -   [Running and Testing](#runing-and-testing)
-    -   [Running a Single File](#running-a-single-file)
     -   [Getting The Solutions for a Challenge](#getting-the-solutions-for-a-challenge)
     -   [Running Tests for a Single Challenge](#running-tests-for-a-single-challenge)
+    -   [Running a Single File](#running-a-single-file)
 -   [Fomratting](#formatting)
 
 ## Installation
@@ -37,6 +37,10 @@ Example usage:
 ```sh
 DAY=3 npm run new-day
 ```
+
+- Once cloned, populated `input.txt` with the raw input of the day.
+- For most challenges, you will only need to implement `processFile`, `part1Solver`, and `part2Solver` to produce solutions with `npm run solve` (see [Getting The Solutions for a Challenge](#getting-the-solutions-for-a-challenge)).
+- If you want to write tests (because you can and you are not in a rush to get stars), there is an opinionated template already set up for you in `index.spec.ts`.
 
 
 ## Running and Testing

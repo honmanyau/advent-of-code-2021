@@ -85,9 +85,61 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 2`, () => {
         example = JSON.parse(stringifiedExample);
     });
 
-    describe(``, () => {
-        it(``, () => {
-            assert.strictEqual(true, false);
+    describe(`for the exmaple input`, () => {
+        it(`should return 900`, () => {
+            const solution = part2Solver(example);
+
+            assert.strictEqual(solution, 900);
+        });
+    });
+
+    describe(`for the exmaple input's first 2 lines`, () => {
+        it(`should return 0`, () => {
+            example.splice(2);
+
+            const solution = part2Solver(example);
+
+            assert.strictEqual(solution, 0);
+        });
+    });
+
+    describe(`for the exmaple input's first 3 lines`, () => {
+        it(`should return 520`, () => {
+            example.splice(3);
+
+            const solution = part2Solver(example);
+
+            assert.strictEqual(solution, 520);
+        });
+    });
+
+    describe(`for the exmaple input's first 4 lines`, () => {
+        it(`should return 585`, () => {
+            example.splice(4);
+
+            const solution = part2Solver(example);
+
+            assert.strictEqual(solution, 520);
+        });
+    });
+
+    describe(`for the exmaple input's first 5 lines`, () => {
+        it(`should return 585`, () => {
+            example.splice(5);
+
+            const solution = part2Solver(example);
+
+            assert.strictEqual(solution, 520);
+        });
+    });
+
+    describe(`for the exmaple input + an additiona line "forward 4"`, () => {
+        it(`should return 585`, () => {
+            example.push(["forward", 4]);
+
+            const solution = part2Solver(example);
+
+            assert.strictEqual(solution, 1900);
         });
     });
 });

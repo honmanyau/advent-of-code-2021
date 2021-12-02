@@ -5,8 +5,9 @@
     "main": "index.js",
     "scripts": {
         "format": "prettier --write .",
-        "solve": "SOLVE=true ts-node",
-        "test": "mocha -r ts-node/register --file",
+        "new-day": "cp -r src/template src/day-$DAY",
+        "solve": "SOLVE=true ts-node src/day-$DAY/index.ts",
+        "test": "mocha -r ts-node/register --file src/day-$DAY/index.spec.ts",
         "ts-node": "ts-node"
     },
     "repository": {

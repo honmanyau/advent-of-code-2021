@@ -32,7 +32,8 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
 // ===========
 // == Types ==
 // ===========
-export type InputLine = [string, number];
+export type Direction = "down" | "forward" | "up";
+export type InputLine = [Direction, number];
 export type InputFile = InputLine[];
 
 // ===============
@@ -48,7 +49,7 @@ export function processFile(file: string): InputLine[] {
     const processLine = (line: string): InputLine => {
         const entries = line.split(" ");
 
-        return [entries[0], Number(entries[1])];
+        return [entries[0] as Direction, Number(entries[1])];
     };
 
     return file.trim().split("\n").map(processLine);
@@ -60,7 +61,29 @@ export function processFile(file: string): InputLine[] {
  * @returns {number} The solution to Part 1 of the puzzle!
  */
 export function part1Solver(input: InputFile): number {
-    return null;
+    let x = 0;
+    let y = 0;
+
+    const moves = {
+        forward: (d: number) => {
+            x += d;
+        },
+        up: (d: number) => {
+            y -= d;
+        },
+        down: (d: number) => {
+            y += d;
+        },
+    };
+
+    for (const line of input) {
+        const [direction, distance] = line;
+        const move = moves[direction as Direction];
+
+        move(distance);
+    }
+
+    return x * y;
 }
 
 /**

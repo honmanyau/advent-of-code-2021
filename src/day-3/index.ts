@@ -29,6 +29,11 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
     );
 }
 
+// ===========
+// == Types ==
+// ===========
+export type Input = string[];
+
 // ===============
 // == Functions ==
 // ===============
@@ -47,7 +52,7 @@ export function processFile(file: string): string[] {
  * @param {number[]} input An array that represents the puzzle's input.
  * @returns {number} The solution to Part 1 of the puzzle!
  */
-export function part1Solver(input: string[]): number {
+export function part1Solver(input: Input): number {
     return -1;
 }
 
@@ -56,6 +61,6 @@ export function part1Solver(input: string[]): number {
  * @param {number[]} input An array that represents the puzzle's input.
  * @returns {number} The solution to Part 2 of the puzzle!
  */
-export function part2Solver(input: string[]): number {
+export function part2Solver(input: Input): number {
     return -1;
 }

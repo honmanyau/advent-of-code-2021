@@ -53,7 +53,24 @@ export function processFile(file: string): string[] {
  * @returns {number} The solution to Part 1 of the puzzle!
  */
 export function part1Solver(input: Input): number {
-    return -1;
+    const countsOneBit: number[] = input[0].split("").map(() => 0);
+
+    for (const line of input) {
+        for (let i = 0; i < line.length; i++) {
+            countsOneBit[i] += Number(line[i]);
+        }
+    }
+
+    const gammaRateBinary = countsOneBit
+        .map((v) => (v > input.length / 2 ? 1 : 0))
+        .join("");
+    const epsilonRateBinary = countsOneBit
+        .map((v) => (v > input.length / 2 ? 0 : 1))
+        .join("");
+    const gammaRate = Number("0b" + gammaRateBinary);
+    const epsilonRate = Number("0b" + epsilonRateBinary);
+
+    return gammaRate * epsilonRate;
 }
 
 /**

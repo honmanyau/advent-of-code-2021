@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+import { start } from "repl";
 
 import { green } from "../utilities";
 
@@ -13,7 +14,7 @@ export const CHALLENGE_TITLE = "Binary Diagnostic";
 // == Main ==
 // ==========
 if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
-    const challengePathname = path.resolve(__dirname, "./input.txt");
+    const challengePathname = path.resolve(__dirname, "./example.txt");
     const challengeFile = fs.readFileSync(challengePathname, "utf-8");
     const input = processFile(challengeFile);
 
@@ -83,7 +84,29 @@ export function part1Solver(input: Input): number {
  * @returns {number} The solution to Part 2 of the puzzle!
  */
 export function part2Solver(input: Input): number {
-    return -1;
+    const lastBitPos = input[0].length;
+
+    let oxygenPartition = input;
+    let dioxidePartition = input;
+
+    // This is a brute-force solution.
+    for (let bitPos = 0; bitPos < lastBitPos; bitPos++) {
+        if (oxygenPartition.length !== 1) {
+            const { ones, zeros } = partition(oxygenPartition, bitPos);
+
+            oxygenPartition = ones.length >= zeros.length ? ones : zeros;
+        }
+
+        if (dioxidePartition.length !== 1) {
+            const { ones, zeros } = partition(dioxidePartition, bitPos);
+
+            dioxidePartition = zeros.length <= ones.length ? zeros : ones;
+        }
+    }
+
+    return (
+        Number("0b" + oxygenPartition[0]) * Number("0b" + dioxidePartition[0])
+    );
 }
 
 /**

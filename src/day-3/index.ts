@@ -90,10 +90,24 @@ export function part2Solver(input: Input): number {
  * For a given bit position `bitPos`, splits the input into two array `more` and
  * `fewer`; where the array `more` contains numbers whose bit is the more
  * frequent bit at that position, and `fewer` contains the rest of the numbers.
+ * @param {Input} input An array that represents (part of) the puzzle's input.
+ * @param {number} bitPos The position of the bit to be analysed.
+ * @returns {Partitioned} The partitioned arrays.
  */
 export function partition(input: Input, bitPos: number): Partitioned {
+    const ones = [];
+    const zeros = [];
+
+    for (const entry of input) {
+        if (entry[bitPos] === "1") {
+            ones.push(entry);
+        } else {
+            zeros.push(entry);
+        }
+    }
+
     return {
-        ones: [],
-        zeros: [],
+        ones,
+        zeros,
     };
 }

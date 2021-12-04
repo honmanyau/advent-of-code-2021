@@ -29,6 +29,15 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
     );
 }
 
+// ===========
+// == Types ==
+// ===========
+export type Bingo = {
+    [num: string]: { row: number; col: number };
+};
+export type Bingos = Bingo[];
+export type Input = { draws: string[]; bingos: Bingos };
+
 // ===============
 // == Functions ==
 // ===============
@@ -38,8 +47,32 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
  * @param {string} file A challenge file read in as a string.
  * @returns {number[]} An array where each line is an entry of the challenge.
  */
-export function processFile(file: string): number {
-    return file.trim().split("\n").map(Number);
+export function processFile(file: string): { draws: string[]; bingos: Bingos } {
+    const lines = file.trim().split("\n");
+    const draws = lines.shift().split(",");
+    const bingos: Bingos = [];
+
+    // Remove empty line after draws.
+    lines.shift();
+
+    while (lines.length !== 0) {
+        const bingo: Bingo = {};
+
+        for (let row = 0; row < 5; row++) {
+            const line = lines.shift().trim().split(/\s+/);
+
+            for (let col = 0; col < 5; col++) {
+                const num: string = line[col];
+
+                bingo[num] = { row, col };
+            }
+        }
+
+        bingos.push(bingo);
+        lines.shift();
+    }
+
+    return { draws, bingos };
 }
 
 /**
@@ -47,8 +80,8 @@ export function processFile(file: string): number {
  * @param {number[]} input An array that represents the puzzle's input.
  * @returns {number} The solution to Part 1 of the puzzle!
  */
-export function part1Solver(input: number[]): number {
-    return null;
+export function part1Solver(input: Input): number {
+    return -1;
 }
 
 /**
@@ -56,6 +89,6 @@ export function part1Solver(input: number[]): number {
  * @param {number[]} input An array that represents the puzzle's input.
  * @returns {number} The solution to Part 2 of the puzzle!
  */
-export function part2Solver(input: number[]): number {
-    return null;
+export function part2Solver(input: Input): number {
+    return -1;
 }

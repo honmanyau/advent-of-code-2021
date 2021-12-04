@@ -91,10 +91,56 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 2`, () => {
     });
 
     describe(`for the exmaple input`, () => {
-        it(`should return ???`, () => {
+        it(`should return 230`, () => {
             const solution = part2Solver(example);
 
-            assert.strictEqual(solution, "");
+            assert.strictEqual(solution, 230);
+        });
+    });
+
+    describe(`for the input [ "1001", "0101" ]`, () => {
+        it(`should return 45`, () => {
+            const solution = part2Solver(["1001", "0101"]);
+
+            assert.strictEqual(solution, 45);
+        });
+    });
+
+    describe(`for the input [ "1001", "1101", "0101" ]`, () => {
+        it(`should return 65`, () => {
+            const solution = part2Solver(["1001", "1101", "0101"]);
+
+            assert.strictEqual(solution, 65);
+        });
+    });
+
+    describe(`for the input [ "1001", "1101", "0101", "0000" ]`, () => {
+        it(`should return 0`, () => {
+            const solution = part2Solver(["1001", "1101", "0101", "0000"]);
+
+            assert.strictEqual(solution, 0);
+        });
+    });
+
+    describe(`for the input [ "1001", "1101", "0101", "0011" ]`, () => {
+        it(`should return 39`, () => {
+            const solution = part2Solver(["1001", "1101", "0101", "0011"]);
+
+            assert.strictEqual(solution, 39);
+        });
+    });
+
+    describe(`for the input [ "1001", "1101", "0101", "0011", "1111" ]`, () => {
+        it(`should return 45`, () => {
+            const solution = part2Solver([
+                "1001",
+                "1101",
+                "0101",
+                "0011",
+                "1111",
+            ]);
+
+            assert.strictEqual(solution, 45);
         });
     });
 });

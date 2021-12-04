@@ -174,12 +174,12 @@ describe(`The function partition()`, () => {
         it(`should partition the input correctly`, () => {
             const solution = partition(["1001", "1010", "0101"], 1);
 
-            assert.strictEqual(solution.ones.length, 2);
-            assert.strictEqual(solution.zeros.length, 1);
+            assert.strictEqual(solution.ones.length, 1);
+            assert.strictEqual(solution.zeros.length, 2);
 
-            assert.strictEqual(solution.ones[0], "1001");
-            assert.strictEqual(solution.ones[1], "1010");
-            assert.strictEqual(solution.zeros[0], "0101");
+            assert.strictEqual(solution.ones[0], "0101");
+            assert.strictEqual(solution.zeros[0], "1001");
+            assert.strictEqual(solution.zeros[1], "1010");
         });
     });
 

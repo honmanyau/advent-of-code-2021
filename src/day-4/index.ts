@@ -118,10 +118,6 @@ export function part1Solver({ draws, bingos }: Input): number {
         }
     }
 
-    if (solvedBingoIndex === null) {
-        throw "No solution!";
-    }
-
     let sumOfUnmarked = 0;
 
     for (const num of Object.keys(bingos[solvedBingoIndex])) {

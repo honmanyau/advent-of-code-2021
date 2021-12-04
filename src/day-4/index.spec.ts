@@ -26,28 +26,6 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
         example = JSON.parse(stringifiedExample);
     });
 
-    describe(
-        [`for the exmaple input with only the first 5 numbers drawn`].join(""),
-        () => {
-            it(`should throw an error`, () => {
-                example.draws.splice(5);
-
-                assert.throws(() => part1Solver(example));
-            });
-        }
-    );
-
-    describe(
-        [`for the exmaple input with only the first 11 numbers drawn`].join(""),
-        () => {
-            it(`should throw an error`, () => {
-                example.draws.splice(11);
-
-                assert.throws(() => part1Solver(example));
-            });
-        }
-    );
-
     describe(`for the exmaple input`, () => {
         it(`should return 4512`, () => {
             const solution = part1Solver(example);

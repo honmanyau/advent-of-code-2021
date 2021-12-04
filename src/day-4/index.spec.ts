@@ -30,7 +30,7 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
         [`for the exmaple input with only the first 5 numbers drawn`].join(""),
         () => {
             it(`should throw an error`, () => {
-                example.draws.slice(0, 5);
+                example.draws.splice(5);
 
                 assert.throws(() => part1Solver(example));
             });
@@ -41,7 +41,7 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
         [`for the exmaple input with only the first 11 numbers drawn`].join(""),
         () => {
             it(`should throw an error`, () => {
-                example.draws.slice(0, 11);
+                example.draws.splice(11);
 
                 assert.throws(() => part1Solver(example));
             });
@@ -56,13 +56,15 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
         });
     });
 
-    describe(`for the exmaple input with 8 as the twelfth draw`, () => {
-        it(`should return 1432`, () => {
-            example.draws[11] = "8";
-
+    describe(`for the exmaple input with 16 as the twelfth draw`, () => {
+        it(`should return 2736`, () => {
+            [example.draws[11], example.draws[13]] = [
+                example.draws[13],
+                example.draws[11],
+            ];
             const solution = part1Solver(example);
 
-            assert.strictEqual(solution, 1432);
+            assert.strictEqual(solution, 2736);
         });
     });
 });

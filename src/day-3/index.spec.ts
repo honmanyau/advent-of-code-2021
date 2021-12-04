@@ -109,9 +109,9 @@ describe(`The function partition()`, () => {
         example = JSON.parse(stringifiedExample);
     });
 
-    describe(`for the input [ "1001", "0101" ] with bitPos = 1`, () => {
+    describe(`for the input [ "1001", "0101" ] with bitPos = 0`, () => {
         it(`should partition the input correctly`, () => {
-            const solution = partition(["1001", "0101"], 1);
+            const solution = partition(["1001", "0101"], 0);
 
             assert.strictEqual(solution.ones.length, 1);
             assert.strictEqual(solution.zeros.length, 1);
@@ -121,9 +121,9 @@ describe(`The function partition()`, () => {
         });
     });
 
-    describe(`for the input [ "1001", "0101" ] with bitPos = 2`, () => {
+    describe(`for the input [ "1001", "0101" ] with bitPos = 1`, () => {
         it(`should partition the input correctly`, () => {
-            const solution = partition(["1001", "0101"], 2);
+            const solution = partition(["1001", "0101"], 1);
 
             assert.strictEqual(solution.ones.length, 1);
             assert.strictEqual(solution.zeros.length, 1);
@@ -133,9 +133,9 @@ describe(`The function partition()`, () => {
         });
     });
 
-    describe(`for the input [ "1001", "0101" ] with bitPos = 3`, () => {
+    describe(`for the input [ "1001", "0101" ] with bitPos = 2`, () => {
         it(`should partition the input correctly`, () => {
-            const solution = partition(["1001", "0101"], 3);
+            const solution = partition(["1001", "0101"], 2);
 
             assert.strictEqual(solution.ones.length, 0);
             assert.strictEqual(solution.zeros.length, 2);
@@ -145,15 +145,28 @@ describe(`The function partition()`, () => {
         });
     });
 
-    describe(`for the input [ "1001", "0101" ] with bitPos = 4`, () => {
+    describe(`for the input [ "1001", "0101" ] with bitPos = 3`, () => {
         it(`should partition the input correctly`, () => {
-            const solution = partition(["1001", "0101"], 4);
+            const solution = partition(["1001", "0101"], 3);
 
             assert.strictEqual(solution.ones.length, 2);
             assert.strictEqual(solution.zeros.length, 0);
 
             assert.strictEqual(solution.ones[0], "1001");
             assert.strictEqual(solution.ones[1], "0101");
+        });
+    });
+
+    describe(`for the input [ "1001", "1010", "0101" ] with bitPos = 0`, () => {
+        it(`should partition the input correctly`, () => {
+            const solution = partition(["1001", "1010", "0101"], 0);
+
+            assert.strictEqual(solution.ones.length, 2);
+            assert.strictEqual(solution.zeros.length, 1);
+
+            assert.strictEqual(solution.ones[0], "1001");
+            assert.strictEqual(solution.ones[1], "1010");
+            assert.strictEqual(solution.zeros[0], "0101");
         });
     });
 
@@ -174,19 +187,6 @@ describe(`The function partition()`, () => {
         it(`should partition the input correctly`, () => {
             const solution = partition(["1001", "1010", "0101"], 2);
 
-            assert.strictEqual(solution.ones.length, 2);
-            assert.strictEqual(solution.zeros.length, 1);
-
-            assert.strictEqual(solution.ones[0], "1001");
-            assert.strictEqual(solution.ones[1], "1010");
-            assert.strictEqual(solution.zeros[0], "0101");
-        });
-    });
-
-    describe(`for the input [ "1001", "1010", "0101" ] with bitPos = 3`, () => {
-        it(`should partition the input correctly`, () => {
-            const solution = partition(["1001", "1010", "0101"], 3);
-
             assert.strictEqual(solution.ones.length, 1);
             assert.strictEqual(solution.zeros.length, 2);
 
@@ -196,9 +196,9 @@ describe(`The function partition()`, () => {
         });
     });
 
-    describe(`for the input [ "1001", "1010", "0101" ] with bitPos = 4`, () => {
+    describe(`for the input [ "1001", "1010", "0101" ] with bitPos = 3`, () => {
         it(`should partition the input correctly`, () => {
-            const solution = partition(["1001", "1010", "0101"], 4);
+            const solution = partition(["1001", "1010", "0101"], 3);
 
             assert.strictEqual(solution.ones.length, 2);
             assert.strictEqual(solution.zeros.length, 1);
@@ -209,9 +209,9 @@ describe(`The function partition()`, () => {
         });
     });
 
-    describe(`for the example input with bitPos = 1`, () => {
+    describe(`for the example input with bitPos = 0`, () => {
         it(`should partition the input correctly`, () => {
-            const solution = partition(example, 1);
+            const solution = partition(example, 0);
 
             assert.strictEqual(solution.ones.length, 7);
             assert.strictEqual(solution.zeros.length, 5);

@@ -81,7 +81,7 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 2`, () => {
 
     describe(`for the exmaple input`, () => {
         it(`should return 1924`, () => {
-            const solution = part1Solver(example);
+            const solution = part2Solver(example);
 
             assert.strictEqual(solution, 1924);
         });

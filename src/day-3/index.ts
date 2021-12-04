@@ -34,8 +34,8 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
 // ===========
 export type Input = string[];
 export type Partitioned = {
-    more: Input;
-    fewer: Input;
+    ones: Input;
+    zeros: Input;
 };
 
 // ===============
@@ -93,7 +93,7 @@ export function part2Solver(input: Input): number {
  */
 export function partition(input: Input, bitPos: number): Partitioned {
     return {
-        more: [],
-        fewer: [],
+        ones: [],
+        zeros: [],
     };
 }

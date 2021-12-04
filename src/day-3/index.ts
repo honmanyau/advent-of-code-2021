@@ -33,6 +33,10 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
 // == Types ==
 // ===========
 export type Input = string[];
+export type Partitioned = {
+    more: Input;
+    fewer: Input;
+};
 
 // ===============
 // == Functions ==
@@ -48,7 +52,7 @@ export function processFile(file: string): string[] {
 }
 
 /**
- * The solver function for part 1 of of the challenge.
+ * The solver function for Part 1 of of the challenge.
  * @param {number[]} input An array that represents the puzzle's input.
  * @returns {number} The solution to Part 1 of the puzzle!
  */
@@ -74,10 +78,22 @@ export function part1Solver(input: Input): number {
 }
 
 /**
- * The solver function for prt 2 of of the challenge.
+ * The solver function for Part 2 of of the challenge.
  * @param {number[]} input An array that represents the puzzle's input.
  * @returns {number} The solution to Part 2 of the puzzle!
  */
 export function part2Solver(input: Input): number {
     return -1;
+}
+
+/**
+ * For a given bit position `bitPos`, splits the input into two array `more` and
+ * `fewer`; where the array `more` contains numbers whose bit is the more
+ * frequent bit at that position, and `fewer` contains the rest of the numbers.
+ */
+export function partition(input: Input, bitPos: number): Partitioned {
+    return {
+        more: [],
+        fewer: [],
+    };
 }

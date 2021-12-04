@@ -88,6 +88,7 @@ export function part1Solver({ draws, bingos }: Input): number {
         };
     });
     const drawn: { [draw: string]: true } = {};
+
     let solvedBingoIndex: number = null;
     let lastDraw: string = null;
 
@@ -137,6 +138,53 @@ export function part1Solver({ draws, bingos }: Input): number {
  * @param {number[]} input An array that represents the puzzle's input.
  * @returns {number} The solution to Part 2 of the puzzle!
  */
-export function part2Solver(input: Input): number {
-    return -1;
+export function part2Solver({ draws, bingos }: Input): number {
+    const marks = bingos.map(() => {
+        return {
+            solved: false,
+            rows: [0, 0, 0, 0, 0],
+            cols: [0, 0, 0, 0, 0],
+        };
+    });
+    const drawn: { [draw: string]: true } = {};
+
+    let numBingosSolved = 0;
+    let lastBingoIndex: number = null;
+    let lastDraw: string = null;
+
+    for (const draw of draws) {
+        drawn[draw] = true;
+        lastDraw = draw;
+
+        for (let i = 0; i < bingos.length; i++) {
+            const bingo = bingos[i];
+
+            if (!marks[i].solved && bingo[draw]) {
+                const { row, col } = bingo[draw];
+
+                marks[i].rows[row]++;
+                marks[i].cols[col]++;
+
+                if (marks[i].rows[row] === 5 || marks[i].cols[col] === 5) {
+                    marks[i].solved = true;
+                    numBingosSolved += 1;
+                    lastBingoIndex = i;
+                }
+            }
+        }
+
+        if (numBingosSolved === bingos.length) {
+            break;
+        }
+    }
+
+    let sumOfUnmarked = 0;
+
+    for (const num of Object.keys(bingos[lastBingoIndex])) {
+        if (!drawn[num]) {
+            sumOfUnmarked += Number(num);
+        }
+    }
+
+    return sumOfUnmarked * Number(lastDraw);
 }

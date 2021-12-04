@@ -80,10 +80,10 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 2`, () => {
     });
 
     describe(`for the exmaple input`, () => {
-        it(`should return ???`, () => {
-            const solution = part2Solver(example);
+        it(`should return 1924`, () => {
+            const solution = part1Solver(example);
 
-            assert.strictEqual(solution, "");
+            assert.strictEqual(solution, 1924);
         });
     });
 });

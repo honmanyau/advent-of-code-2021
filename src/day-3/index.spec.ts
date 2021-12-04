@@ -10,6 +10,7 @@ import {
     processFile,
     part1Solver,
     part2Solver,
+    partition,
 } from "./index";
 
 const examplePathname = path.resolve(__dirname, "./example.txt");
@@ -94,6 +95,140 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 2`, () => {
             const solution = part2Solver(example);
 
             assert.strictEqual(solution, "");
+        });
+    });
+});
+
+// ===============
+// == Functions ==
+// ===============
+describe(`The function partition()`, () => {
+    let example: Input;
+
+    beforeEach(() => {
+        example = JSON.parse(stringifiedExample);
+    });
+
+    describe(`for the input [ "1001", "0101" ] with bitPos = 1`, () => {
+        it(`should partition the input correctly`, () => {
+            const solution = partition(["1001", "0101"], 1);
+
+            assert.strictEqual(solution.ones.length, 1);
+            assert.strictEqual(solution.zeros.length, 1);
+
+            assert.strictEqual(solution.ones[0], "1001");
+            assert.strictEqual(solution.zeros[0], "0101");
+        });
+    });
+
+    describe(`for the input [ "1001", "0101" ] with bitPos = 2`, () => {
+        it(`should partition the input correctly`, () => {
+            const solution = partition(["1001", "0101"], 2);
+
+            assert.strictEqual(solution.ones.length, 1);
+            assert.strictEqual(solution.zeros.length, 1);
+
+            assert.strictEqual(solution.ones[0], "0101");
+            assert.strictEqual(solution.zeros[0], "1001");
+        });
+    });
+
+    describe(`for the input [ "1001", "0101" ] with bitPos = 3`, () => {
+        it(`should partition the input correctly`, () => {
+            const solution = partition(["1001", "0101"], 3);
+
+            assert.strictEqual(solution.ones.length, 0);
+            assert.strictEqual(solution.zeros.length, 2);
+
+            assert.strictEqual(solution.zeros[0], "1001");
+            assert.strictEqual(solution.zeros[1], "0101");
+        });
+    });
+
+    describe(`for the input [ "1001", "0101" ] with bitPos = 4`, () => {
+        it(`should partition the input correctly`, () => {
+            const solution = partition(["1001", "0101"], 4);
+
+            assert.strictEqual(solution.ones.length, 2);
+            assert.strictEqual(solution.zeros.length, 0);
+
+            assert.strictEqual(solution.ones[0], "1001");
+            assert.strictEqual(solution.ones[1], "0101");
+        });
+    });
+
+    describe(`for the input [ "1001", "1010", "0101" ] with bitPos = 1`, () => {
+        it(`should partition the input correctly`, () => {
+            const solution = partition(["1001", "1010", "0101"], 1);
+
+            assert.strictEqual(solution.ones.length, 2);
+            assert.strictEqual(solution.zeros.length, 1);
+
+            assert.strictEqual(solution.ones[0], "1001");
+            assert.strictEqual(solution.ones[1], "1010");
+            assert.strictEqual(solution.zeros[0], "0101");
+        });
+    });
+
+    describe(`for the input [ "1001", "1010", "0101" ] with bitPos = 2`, () => {
+        it(`should partition the input correctly`, () => {
+            const solution = partition(["1001", "1010", "0101"], 2);
+
+            assert.strictEqual(solution.ones.length, 2);
+            assert.strictEqual(solution.zeros.length, 1);
+
+            assert.strictEqual(solution.ones[0], "1001");
+            assert.strictEqual(solution.ones[1], "1010");
+            assert.strictEqual(solution.zeros[0], "0101");
+        });
+    });
+
+    describe(`for the input [ "1001", "1010", "0101" ] with bitPos = 3`, () => {
+        it(`should partition the input correctly`, () => {
+            const solution = partition(["1001", "1010", "0101"], 3);
+
+            assert.strictEqual(solution.ones.length, 1);
+            assert.strictEqual(solution.zeros.length, 2);
+
+            assert.strictEqual(solution.ones[0], "1010");
+            assert.strictEqual(solution.zeros[0], "1001");
+            assert.strictEqual(solution.zeros[1], "0101");
+        });
+    });
+
+    describe(`for the input [ "1001", "1010", "0101" ] with bitPos = 4`, () => {
+        it(`should partition the input correctly`, () => {
+            const solution = partition(["1001", "1010", "0101"], 4);
+
+            assert.strictEqual(solution.ones.length, 2);
+            assert.strictEqual(solution.zeros.length, 1);
+
+            assert.strictEqual(solution.ones[0], "1001");
+            assert.strictEqual(solution.ones[1], "0101");
+            assert.strictEqual(solution.zeros[0], "1010");
+        });
+    });
+
+    describe(`for the example input with bitPos = 1`, () => {
+        it(`should partition the input correctly`, () => {
+            const solution = partition(example, 1);
+
+            assert.strictEqual(solution.ones.length, 7);
+            assert.strictEqual(solution.zeros.length, 5);
+
+            assert.strictEqual(solution.ones[0], "11110");
+            assert.strictEqual(solution.ones[1], "10110");
+            assert.strictEqual(solution.ones[2], "10111");
+            assert.strictEqual(solution.ones[3], "10101");
+            assert.strictEqual(solution.ones[4], "11100");
+            assert.strictEqual(solution.ones[5], "10000");
+            assert.strictEqual(solution.ones[6], "11001");
+
+            assert.strictEqual(solution.zeros[0], "00100");
+            assert.strictEqual(solution.zeros[1], "01111");
+            assert.strictEqual(solution.zeros[2], "00111");
+            assert.strictEqual(solution.zeros[3], "00010");
+            assert.strictEqual(solution.zeros[4], "01010");
         });
     });
 });

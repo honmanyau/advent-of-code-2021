@@ -80,8 +80,56 @@ export function processFile(file: string): { draws: string[]; bingos: Bingos } {
  * @param {number[]} input An array that represents the puzzle's input.
  * @returns {number} The solution to Part 1 of the puzzle!
  */
-export function part1Solver(input: Input): number {
-    return -1;
+export function part1Solver({ draws, bingos }: Input): number {
+    const marks = bingos.map(() => {
+        return {
+            rows: [0, 0, 0, 0, 0],
+            cols: [0, 0, 0, 0, 0],
+        };
+    });
+    const drawn: { [draw: string]: true } = {};
+    let solvedBingoIndex: number = null;
+    let lastDraw: string = null;
+
+    for (const draw of draws) {
+        drawn[draw] = true;
+        lastDraw = draw;
+
+        for (let i = 0; i < bingos.length; i++) {
+            const bingo = bingos[i];
+
+            if (bingo[draw]) {
+                const { row, col } = bingo[draw];
+
+                marks[i].rows[row]++;
+                marks[i].cols[col]++;
+
+                if (marks[i].rows[row] === 5 || marks[i].cols[col] === 5) {
+                    solvedBingoIndex = i;
+
+                    break;
+                }
+            }
+        }
+
+        if (solvedBingoIndex !== null) {
+            break;
+        }
+    }
+
+    if (solvedBingoIndex === null) {
+        throw "No solution!";
+    }
+
+    let sumOfUnmarked = 0;
+
+    for (const num of Object.keys(bingos[solvedBingoIndex])) {
+        if (!drawn[num]) {
+            sumOfUnmarked += Number(num);
+        }
+    }
+
+    return sumOfUnmarked * Number(lastDraw);
 }
 
 /**

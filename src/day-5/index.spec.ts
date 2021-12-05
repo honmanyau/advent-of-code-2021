@@ -4,6 +4,7 @@ import * as fs from "fs";
 import * as path from "path";
 
 import {
+    Input,
     DAY_NUM,
     CHALLENGE_TITLE,
     processFile,
@@ -19,7 +20,7 @@ const stringifiedExample = JSON.stringify(processFile(exampleFile));
 // == Part 1 ==
 // ============
 describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
-    let example: any;
+    let example: Input;
 
     beforeEach(() => {
         example = JSON.parse(stringifiedExample);
@@ -35,7 +36,11 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
 
     describe(`for the exmaple input with an extra line '0,0 -> 0,3'`, () => {
         it(`should return 5`, () => {
-            example.push("0,0 -> 0,3");
+            example.push([
+                [0, 0],
+                [0, 3],
+                [0, 1],
+            ]);
 
             const solution = part1Solver(example);
 
@@ -49,20 +54,32 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
             ` and '0,0 -> 0,4'`,
         ].join(""),
         () => {
-            it(`should return 8`, () => {
-                example.push("0,0 -> 0,3");
-                example.push("0,0 -> 0,4");
+            it(`should return 9`, () => {
+                example.push([
+                    [0, 0],
+                    [0, 3],
+                    [0, 1],
+                ]);
+                example.push([
+                    [0, 0],
+                    [0, 4],
+                    [0, 1],
+                ]);
 
                 const solution = part1Solver(example);
 
-                assert.strictEqual(solution, 8);
+                assert.strictEqual(solution, 9);
             });
         }
     );
 
     describe(`for the exmaple input with an extra line '1,3 -> 1,5'`, () => {
         it(`should return 6`, () => {
-            example.push("1,3 -> 1,5");
+            example.push([
+                [1, 3],
+                [1, 5],
+                [0, 1],
+            ]);
 
             const solution = part1Solver(example);
 
@@ -72,7 +89,11 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
 
     describe(`for the exmaple input with an extra line '0,4 -> 2,4'`, () => {
         it(`should return 7`, () => {
-            example.push("0,4 -> 2,4");
+            example.push([
+                [0, 4],
+                [2, 4],
+                [1, 0],
+            ]);
 
             const solution = part1Solver(example);
 
@@ -82,7 +103,11 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
 
     describe(`for the exmaple input with an extra line '0,4 -> 3,4'`, () => {
         it(`should return 7`, () => {
-            example.push("0,4 -> 3,4");
+            example.push([
+                [0, 4],
+                [3, 4],
+                [1, 0],
+            ]);
 
             const solution = part1Solver(example);
 

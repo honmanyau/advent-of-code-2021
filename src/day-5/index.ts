@@ -72,12 +72,15 @@ export function processFile(file: string): Input {
  * @param {number[]} input An array that represents the puzzle's input.
  * @returns {number} The solution to Part 1 of the puzzle!
  */
-export function part1Solver(input: Input, includeDiagonals = false): number {
+export function part1Solver(
+    input: Input,
+    options = { includeDiagonals: false }
+): number {
     const map: Map = {};
     let numDangerousPoints = 0;
 
     for (const [[x1, y1], [x2, y2], [dx, dy]] of input) {
-        const shouldProcess = includeDiagonals ? true : dx === 0 || dy === 0;
+        const shouldProcess = options.includeDiagonals || dx === 0 || dy === 0;
 
         if (shouldProcess) {
             for (
@@ -109,5 +112,5 @@ export function part1Solver(input: Input, includeDiagonals = false): number {
  * @returns {number} The solution to Part 2 of the puzzle!
  */
 export function part2Solver(input: Input): number {
-    return part1Solver(input, true);
+    return part1Solver(input, { includeDiagonals: true });
 }

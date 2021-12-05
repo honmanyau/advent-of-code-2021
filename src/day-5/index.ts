@@ -13,7 +13,7 @@ export const CHALLENGE_TITLE = "Hydrothermal Venture";
 // == Main ==
 // ==========
 if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
-    const challengePathname = path.resolve(__dirname, "./input.txt");
+    const challengePathname = path.resolve(__dirname, "./example.txt");
     const challengeFile = fs.readFileSync(challengePathname, "utf-8");
     const input = processFile(challengeFile);
 
@@ -34,6 +34,11 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
 // ===========
 export type Input = [Point, Point, Point][];
 export type Point = [number, number];
+export type Map = {
+    [x: number]: {
+        [y: number]: number;
+    };
+};
 
 // ===============
 // == Functions ==
@@ -51,8 +56,10 @@ export function processFile(file: string): Input {
             .replace(" -> ", ",")
             .split(",")
             .map((v) => Number(v));
-        const dx = x2 - x1 / Math.abs(x2 - x1);
-        const dy = y2 - y1 / Math.abs(y2 - y1);
+        const diffX = x2 - x1;
+        const diffY = y2 - y1;
+        const dx = diffX === 0 ? 0 : diffX / Math.abs(diffX);
+        const dy = diffY === 0 ? 0 : diffY / Math.abs(diffY);
 
         return [
             [x1, x2],
@@ -70,6 +77,11 @@ export function processFile(file: string): Input {
  * @returns {number} The solution to Part 1 of the puzzle!
  */
 export function part1Solver(input: Input): number {
+    const map: Map = {};
+
+    for (const [[x1, x2], [y1, y2], [dx, dy]] of input) {
+    }
+
     return -1;
 }
 

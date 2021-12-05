@@ -13,7 +13,7 @@ export const CHALLENGE_TITLE = "Hydrothermal Venture";
 // == Main ==
 // ==========
 if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
-    const challengePathname = path.resolve(__dirname, "./example.txt");
+    const challengePathname = path.resolve(__dirname, "./input.txt");
     const challengeFile = fs.readFileSync(challengePathname, "utf-8");
     const input = processFile(challengeFile);
 

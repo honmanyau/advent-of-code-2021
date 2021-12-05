@@ -114,26 +114,6 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
             assert.strictEqual(solution, 7);
         });
     });
-
-    // describe(`for the exmaple input with an extra line '1,3 -> 3,5'`, () => {
-    //     it(`should return 6`, () => {
-    //         example.push("1,3 -> 3,5");
-
-    //         const solution = part1Solver(example);
-
-    //         assert.strictEqual(solution, 6);
-    //     });
-    // });
-
-    // describe(`for the exmaple input with an extra line '2,3 -> 4,5'`, () => {
-    //     it(`should return 5`, () => {
-    //         example.push("2,3 -> 4,5");
-
-    //         const solution = part1Solver(example);
-
-    //         assert.strictEqual(solution, 5);
-    //     });
-    // });
 });
 
 // ============
@@ -147,10 +127,66 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 2`, () => {
     });
 
     describe(`for the exmaple input`, () => {
-        it(`should return ???`, () => {
+        it(`should return 12`, () => {
             const solution = part2Solver(example);
 
-            assert.strictEqual(solution, "");
+            assert.strictEqual(solution, 12);
+        });
+    });
+
+    describe(`for the exmaple input with an extra line '0,1 -> 1,2'`, () => {
+        it(`should return 12`, () => {
+            example.push([
+                [0, 1],
+                [1, 2],
+                [1, 1],
+            ]);
+
+            const solution = part2Solver(example);
+
+            assert.strictEqual(solution, 12);
+        });
+    });
+
+    describe(`for the exmaple input with an extra line '0,0 -> 1,1'`, () => {
+        it(`should return 14`, () => {
+            example.push([
+                [0, 0],
+                [1, 1],
+                [1, 1],
+            ]);
+
+            const solution = part2Solver(example);
+
+            assert.strictEqual(solution, 14);
+        });
+    });
+
+    describe(`for the exmaple input with an extra line '9,4 -> 6,7'`, () => {
+        it(`should return 13`, () => {
+            example.push([
+                [9, 4],
+                [6, 7],
+                [-1, 1],
+            ]);
+
+            const solution = part2Solver(example);
+
+            assert.strictEqual(solution, 13);
+        });
+    });
+
+    describe(`for the exmaple input with an extra line '8,4 -> 5,7'`, () => {
+        it(`should return 14`, () => {
+            example.push([
+                [8, 4],
+                [5, 7],
+                [-1, 1],
+            ]);
+
+            const solution = part2Solver(example);
+
+            assert.strictEqual(solution, 14);
         });
     });
 });

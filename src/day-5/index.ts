@@ -62,8 +62,8 @@ export function processFile(file: string): Input {
         const dy = diffY === 0 ? 0 : diffY / Math.abs(diffY);
 
         return [
-            [x1, x2],
-            [y1, y2],
+            [x1, y1],
+            [x2, y2],
             [dx, dy],
         ];
     });
@@ -79,7 +79,7 @@ export function processFile(file: string): Input {
 export function part1Solver(input: Input): number {
     const map: Map = {};
 
-    for (const [[x1, x2], [y1, y2], [dx, dy]] of input) {
+    for (const [[x1, y1], [x2, y2], [dx, dy]] of input) {
     }
 
     return -1;

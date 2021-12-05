@@ -34,11 +34,7 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
 // ===========
 export type Input = [Point, Point, Point][];
 export type Point = [number, number];
-export type Map = {
-    [x: number]: {
-        [y: number]: number;
-    };
-};
+export type Map = { [coords: string]: number };
 
 // ===============
 // == Functions ==
@@ -78,11 +74,33 @@ export function processFile(file: string): Input {
  */
 export function part1Solver(input: Input): number {
     const map: Map = {};
+    let numDangerousPoints = 0;
 
     for (const [[x1, y1], [x2, y2], [dx, dy]] of input) {
+        const isNotDiagonal = dx === 0 || dy === 0;
+
+        if (isNotDiagonal) {
+            for (
+                let x = x1, y = y1;
+                !(x === x2 + dx && y === y2 + dy);
+                x += dx, y += dy
+            ) {
+                const hash = `${x},${y}`;
+
+                if (!map[hash]) {
+                    map[hash] = 0;
+                }
+
+                map[hash] += 1;
+
+                if (map[hash] === 2) {
+                    numDangerousPoints += 1;
+                }
+            }
+        }
     }
 
-    return -1;
+    return numDangerousPoints;
 }
 
 /**

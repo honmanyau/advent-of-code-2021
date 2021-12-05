@@ -35,6 +35,8 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
 
     describe(`for the exmaple input with an extra line '0,0 -> 0,3'`, () => {
         it(`should return 5`, () => {
+            example.push("0,0 -> 0,3");
+
             const solution = part1Solver(example);
 
             assert.strictEqual(solution, 5);
@@ -48,6 +50,9 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
         ].join(""),
         () => {
             it(`should return 8`, () => {
+                example.push("0,0 -> 0,3");
+                example.push("0,0 -> 0,4");
+
                 const solution = part1Solver(example);
 
                 assert.strictEqual(solution, 8);
@@ -57,6 +62,8 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
 
     describe(`for the exmaple input with an extra line '1,3 -> 1,5'`, () => {
         it(`should return 6`, () => {
+            example.push("1,3 -> 1,5");
+
             const solution = part1Solver(example);
 
             assert.strictEqual(solution, 6);
@@ -65,6 +72,8 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
 
     describe(`for the exmaple input with an extra line '0,4 -> 2,4'`, () => {
         it(`should return 7`, () => {
+            example.push("0,4 -> 2,4");
+
             const solution = part1Solver(example);
 
             assert.strictEqual(solution, 7);
@@ -73,27 +82,33 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
 
     describe(`for the exmaple input with an extra line '0,4 -> 3,4'`, () => {
         it(`should return 7`, () => {
+            example.push("0,4 -> 3,4");
+
             const solution = part1Solver(example);
 
             assert.strictEqual(solution, 7);
         });
     });
 
-    describe(`for the exmaple input with an extra line '1,3 -> 3,5'`, () => {
-        it(`should return 6`, () => {
-            const solution = part1Solver(example);
+    // describe(`for the exmaple input with an extra line '1,3 -> 3,5'`, () => {
+    //     it(`should return 6`, () => {
+    //         example.push("1,3 -> 3,5");
 
-            assert.strictEqual(solution, 6);
-        });
-    });
+    //         const solution = part1Solver(example);
 
-    describe(`for the exmaple input with an extra line '2,3 -> 4,5'`, () => {
-        it(`should return 5`, () => {
-            const solution = part1Solver(example);
+    //         assert.strictEqual(solution, 6);
+    //     });
+    // });
 
-            assert.strictEqual(solution, 5);
-        });
-    });
+    // describe(`for the exmaple input with an extra line '2,3 -> 4,5'`, () => {
+    //     it(`should return 5`, () => {
+    //         example.push("2,3 -> 4,5");
+
+    //         const solution = part1Solver(example);
+
+    //         assert.strictEqual(solution, 5);
+    //     });
+    // });
 });
 
 // ============

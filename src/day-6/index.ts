@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+import { Input } from "../day-3";
 
 import { green } from "../utilities";
 
@@ -39,7 +40,17 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
  * @returns {number[]} An array where each line is an entry of the challenge.
  */
 export function processFile(file: string): number[] {
-    return file.trim().split(",").map(Number);
+    const input = Array.from({ length: 9 }).map((_v) => 0);
+
+    file.trim()
+        .split(",")
+        .forEach((v) => {
+            const day = Number(v);
+
+            input[day] += 1;
+        });
+
+    return input;
 }
 
 /**
@@ -47,8 +58,21 @@ export function processFile(file: string): number[] {
  * @param {number[]} input An array that represents the puzzle's input.
  * @returns {number} The solution to Part 1 of the puzzle!
  */
-export function part1Solver(input: number[]): number {
-    return null;
+export function part1Solver(input: number[], iterations = 80): number {
+    for (let i = 0; i < iterations; i++) {
+        const nextNumZeroDayFish = input[0];
+
+        for (let day = 0; day < 8; day++) {
+            input[day] = input[day + 1];
+        }
+
+        input[6] += nextNumZeroDayFish;
+        input[8] = nextNumZeroDayFish;
+    }
+
+    const numFish = input.reduce((accumulator, v) => accumulator + v, 0);
+
+    return numFish;
 }
 
 /**

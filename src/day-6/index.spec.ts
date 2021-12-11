@@ -19,17 +19,73 @@ const stringifiedExample = JSON.stringify(processFile(exampleFile));
 // == Part 1 ==
 // ============
 describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
-    let example: any; // Refer to Day-2's solution for a typed example.
+    let example: number[];
 
     beforeEach(() => {
         example = JSON.parse(stringifiedExample);
     });
 
     describe(`for the exmaple input`, () => {
-        it(`should return ???`, () => {
+        it(`should return 5 after 1 day`, () => {
             const solution = part1Solver(example);
 
-            assert.strictEqual(solution, "");
+            assert.strictEqual(solution, 5);
+        });
+    });
+
+    describe(`for the exmaple input`, () => {
+        it(`should return 6 after 2 days`, () => {
+            const solution = part1Solver(example);
+
+            assert.strictEqual(solution, 6);
+        });
+    });
+
+    describe(`for the exmaple input`, () => {
+        it(`should return 7 after 3 days`, () => {
+            const solution = part1Solver(example);
+
+            assert.strictEqual(solution, 7);
+        });
+    });
+
+    describe(`for the exmaple input`, () => {
+        it(`should return 10 after 5 days`, () => {
+            const solution = part1Solver(example);
+
+            assert.strictEqual(solution, 10);
+        });
+    });
+
+    describe(`for the exmaple input`, () => {
+        it(`should return 12 after 10 days`, () => {
+            const solution = part1Solver(example);
+
+            assert.strictEqual(solution, 12);
+        });
+    });
+
+    describe(`for the exmaple input`, () => {
+        it(`should return 20 after 15 days`, () => {
+            const solution = part1Solver(example);
+
+            assert.strictEqual(solution, 20);
+        });
+    });
+
+    describe(`for the exmaple input`, () => {
+        it(`should return 26 after 18 days`, () => {
+            const solution = part1Solver(example);
+
+            assert.strictEqual(solution, 26);
+        });
+    });
+
+    describe(`for the exmaple input`, () => {
+        it(`should return 5934 after 80 days`, () => {
+            const solution = part1Solver(example);
+
+            assert.strictEqual(solution, 5934);
         });
     });
 });

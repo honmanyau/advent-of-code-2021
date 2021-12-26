@@ -48,7 +48,15 @@ export function processFile(file: string): number[] {
  * @returns {number} The solution to Part 1 of the puzzle!
  */
 export function part1Solver(input: number[]): number {
-    return null;
+    const positions = [ ...input ].sort((a, b) => a - b);
+    const finalPosition = getFinalPosition(positions);
+    let fuelRequired = 0;
+
+    for (const position of positions) {
+        fuelRequired += Math.abs(finalPosition - position)
+    }
+
+    return fuelRequired;
 }
 
 /**
@@ -58,4 +66,15 @@ export function part1Solver(input: number[]): number {
  */
 export function part2Solver(input: number[]): number {
     return null;
+}
+
+/**
+ * This function returns the median for a sorted arrary with an odd number of,
+ * items or the smaller element closest to the median in an array with an even
+ * number of items.
+ */
+function getFinalPosition(input: number[]): number {
+    const middleIndexFloored = Math.floor((input.length - 1) / 2);
+
+    return input[middleIndexFloored];
 }

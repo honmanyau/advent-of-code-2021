@@ -65,7 +65,7 @@ export function part1Solver(input: number[]): number {
  * @returns {number} The solution to Part 2 of the puzzle!
  */
 export function part2Solver(input: number[]): number {
-    return null;
+    return -1;
 }
 
 /**

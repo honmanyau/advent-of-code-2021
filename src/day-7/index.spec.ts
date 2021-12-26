@@ -35,7 +35,7 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
 
     describe(`for the input "0,0"`, () => {
         it(`should return 0`, () => {
-            const solution = part1Solver(example);
+            const solution = part1Solver([0, 0]);
 
             assert.strictEqual(solution, 0);
         });
@@ -43,7 +43,7 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
 
     describe(`for the input "0,1,0"`, () => {
         it(`should return 1`, () => {
-            const solution = part1Solver(example);
+            const solution = part1Solver([0, 1, 0]);
 
             assert.strictEqual(solution, 1);
         });
@@ -51,7 +51,7 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
 
     describe(`for the input "0,1,2"`, () => {
         it(`should return 2`, () => {
-            const solution = part1Solver(example);
+            const solution = part1Solver([0, 1, 2]);
 
             assert.strictEqual(solution, 2);
         });
@@ -59,7 +59,7 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
 
     describe(`for the input "0,1,1,2,2,4"`, () => {
         it(`should return 6`, () => {
-            const solution = part1Solver(example);
+            const solution = part1Solver([0, 1, 1, 2, 2, 4]);
 
             assert.strictEqual(solution, 6);
         });

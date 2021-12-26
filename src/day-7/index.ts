@@ -51,6 +51,7 @@ export function part1Solver(input: number[]): number {
     const positions = [ ...input ].sort((a, b) => a - b);
     const finalPositionIndex = Math.floor((input.length - 1) / 2);
     const finalPosition = positions[finalPositionIndex];
+
     let fuelRequired = 0;
 
     for (const position of positions) {
@@ -66,5 +67,21 @@ export function part1Solver(input: number[]): number {
  * @returns {number} The solution to Part 2 of the puzzle!
  */
 export function part2Solver(input: number[]): number {
-    return -1;
+    const positions = [ ...input ].sort((a, b) => a - b);
+    const sumOfPositions = positions.reduce((acc, v) => acc + v, 0);
+    const finalPositionFloor = Math.floor(sumOfPositions / positions.length);
+    const finalPositionCeil = Math.ceil(sumOfPositions / positions.length);
+
+    let fuelRequiredFloor = 0;
+    let fuelRequiredCeil = 0
+    
+    for (const position of positions) {
+        const distanceFromFloor = Math.abs(finalPositionFloor - position);
+        const distanceFromCeil = Math.abs(finalPositionCeil - position);
+
+        fuelRequiredFloor += (1 + distanceFromFloor) * distanceFromFloor / 2;
+        fuelRequiredCeil += (1 + distanceFromCeil) * distanceFromCeil / 2;
+    }
+
+    return Math.min(fuelRequiredFloor, fuelRequiredCeil);
 }

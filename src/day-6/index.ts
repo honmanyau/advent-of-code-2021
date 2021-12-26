@@ -59,18 +59,20 @@ export function processFile(file: string): number[] {
  * @returns {number} The solution to Part 1 of the puzzle!
  */
 export function part1Solver(input: number[], iterations = 80): number {
+    const _input = [ ...input ];
+
     for (let i = 0; i < iterations; i++) {
-        const nextNumZeroDayFish = input[0];
+        const nextNumZeroDayFish = _input[0];
 
         for (let day = 0; day < 8; day++) {
-            input[day] = input[day + 1];
+            _input[day] = _input[day + 1];
         }
 
-        input[6] += nextNumZeroDayFish;
-        input[8] = nextNumZeroDayFish;
+        _input[6] += nextNumZeroDayFish;
+        _input[8] = nextNumZeroDayFish;
     }
 
-    const numFish = input.reduce((accumulator, v) => accumulator + v, 0);
+    const numFish = _input.reduce((accumulator, v) => accumulator + v, 0);
 
     return numFish;
 }
@@ -81,5 +83,5 @@ export function part1Solver(input: number[], iterations = 80): number {
  * @returns {number} The solution to Part 2 of the puzzle!
  */
 export function part2Solver(input: number[]): number {
-    return -1;
+    return part1Solver(input, 256);
 }

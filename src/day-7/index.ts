@@ -38,10 +38,8 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
  * @param {string} file A challenge file read in as a string.
  * @returns {number[]} An array where each line is an entry of the challenge.
  */
-export function processFile(file: string): number {
-    throw "Implement function for processing example and input files!";
-    // Example:
-    // return file.trim().split("\n").map(Number);
+export function processFile(file: string): number[] {
+    return file.trim().split(',').map(Number);
 }
 
 /**

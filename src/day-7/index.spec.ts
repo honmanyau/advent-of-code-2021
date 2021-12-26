@@ -77,10 +77,42 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 2`, () => {
     });
 
     describe(`for the exmaple input`, () => {
-        it(`should return ???`, () => {
-            const solution = part2Solver(example);
+        it(`should return 168`, () => {
+            const solution = part1Solver(example);
 
-            assert.strictEqual(solution, "");
+            assert.strictEqual(solution, 168);
+        });
+    });
+
+    describe(`for the input "0,0"`, () => {
+        it(`should return 0`, () => {
+            const solution = part1Solver([0, 0]);
+
+            assert.strictEqual(solution, 0);
+        });
+    });
+
+    describe(`for the input "0,1,0"`, () => {
+        it(`should return 1`, () => {
+            const solution = part1Solver([0, 1, 0]);
+
+            assert.strictEqual(solution, 1);
+        });
+    });
+
+    describe(`for the input "0,1,2"`, () => {
+        it(`should return 2`, () => {
+            const solution = part1Solver([0, 1, 2]);
+
+            assert.strictEqual(solution, 2);
+        });
+    });
+
+    describe(`for the input "0,1,1,2,2,4"`, () => {
+        it(`should return 8`, () => {
+            const solution = part1Solver([0, 1, 1, 2, 2, 4]);
+
+            assert.strictEqual(solution, 8);
         });
     });
 });

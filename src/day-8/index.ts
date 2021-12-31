@@ -89,9 +89,9 @@ export function part1Solver(input: Input): number {
 
     let uniqueSegmentsCount = 0;
 
-    for (const [_signalPatterns, digits] of input) {
-        for (const digit of digits) {
-            if (uniqueSegments[digit.length]) {
+    for (const [_signalPatterns, digitPatterns] of input) {
+        for (const digitPattern of digitPatterns) {
+            if (uniqueSegments[digitPattern.length]) {
                 uniqueSegmentsCount += 1;
             }
         }
@@ -106,7 +106,79 @@ export function part1Solver(input: Input): number {
  * @returns {number} The solution to Part 2 of the puzzle!
  */
 export function part2Solver(input: Input): number {
-    return -1;
+    let sum = 0;
+
+    for (const [signalPatterns, digitPatterns] of input) {
+        const patternToDigit: { [key: string]: number } = {};
+        const memo: { [key: number]: number } = {};
+
+        // Sort patterns because they are not necessarily in the correct order
+        // between signal patterns and digit patterns.
+        signalPatterns.forEach((pattern, i) => {
+            signalPatterns[i] = sortAlphabetically(pattern);
+        });
+
+        digitPatterns.forEach((pattern, i) => {
+            digitPatterns[i] = sortAlphabetically(pattern);
+        });
+
+        // Find unique segments first.
+        for (const signalPattern of signalPatterns) {
+            if (signalPattern.length === 2) {
+                patternToDigit[signalPattern] = 1;
+                memo[1] = parseInt(convertToBinaryString(signalPattern), 2);
+            } else if (signalPattern.length === 3) {
+                patternToDigit[signalPattern] = 7;
+                memo[7] = parseInt(convertToBinaryString(signalPattern), 2);
+            } else if (signalPattern.length === 4) {
+                patternToDigit[signalPattern] = 4;
+                memo[4] = parseInt(convertToBinaryString(signalPattern), 2);
+            } else if (signalPattern.length === 7) {
+                patternToDigit[signalPattern] = 8;
+                memo[8] = parseInt(convertToBinaryString(signalPattern), 2);
+            }
+        }
+
+        // Evaluate all other cases
+        for (const signalPattern of signalPatterns) {
+            const num = parseInt(convertToBinaryString(signalPattern), 2);
+
+            if (signalPattern.length === 6) {
+                if ((num | memo[4]) === num) {
+                    patternToDigit[signalPattern] = 9;
+                    memo[9] = num;
+                } else if ((num | memo[1]) === num) {
+                    patternToDigit[signalPattern] = 0;
+                    memo[0] = num;
+                } else {
+                    patternToDigit[signalPattern] = 6;
+                    memo[6] = num;
+                }
+            } else if (signalPattern.length == 5) {
+                if ((num | memo[1]) == num) {
+                    patternToDigit[signalPattern] = 3;
+                    memo[3] = num;
+                } else if ((num | (memo[4] ^ memo[1])) == num) {
+                    patternToDigit[signalPattern] = 5;
+                    memo[5] = num;
+                } else {
+                    patternToDigit[signalPattern] = 2;
+                    memo[2] = num;
+                }
+            }
+        }
+
+        // Concatentate patterns to digits
+        let result = "";
+
+        for (const digitPattern of digitPatterns) {
+            result += String(patternToDigit[digitPattern]);
+        }
+
+        sum += Number(result);
+    }
+
+    return sum;
 }
 
 /**

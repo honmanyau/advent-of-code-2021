@@ -46,7 +46,7 @@ type SignalPatterns = [
 ];
 type OutputValue = [string, string, string, string];
 type InputEntry = [SignalPatterns, OutputValue];
-type Input = InputEntry[];
+export type Input = InputEntry[];
 
 // ===============
 // == Functions ==

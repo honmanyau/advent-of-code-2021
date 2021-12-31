@@ -30,6 +30,25 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
 }
 
 // ===============
+// == Interface ==
+// ===============
+type SignalPatterns = [
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string
+];
+type OutputValue = [string, string, string, string];
+type InputEntry = [SignalPatterns, OutputValue];
+type Input = InputEntry[];
+
+// ===============
 // == Functions ==
 // ===============
 /**
@@ -38,10 +57,20 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
  * @param {string} file A challenge file read in as a string.
  * @returns {number[]} An array where each line is an entry of the challenge.
  */
-export function processFile(file: string): number {
-    throw "Implement function for processing example and input files!";
-    // Example:
-    // return file.trim().split("\n").map(Number);
+export function processFile(file: string): Input {
+    const lines = file.trim().split("\n");
+    const input: Input = [];
+
+    for (const line of lines) {
+        const entry = line
+            .trim()
+            .split("|")
+            .map((s) => s.trim().split(" ")) as InputEntry;
+
+        input.push(entry);
+    }
+    console.log(input);
+    return input;
 }
 
 /**
@@ -49,8 +78,8 @@ export function processFile(file: string): number {
  * @param {number[]} input An array that represents the puzzle's input.
  * @returns {number} The solution to Part 1 of the puzzle!
  */
-export function part1Solver(input: number[]): number {
-    return null;
+export function part1Solver(input: Input): number {
+    return -1;
 }
 
 /**
@@ -58,6 +87,6 @@ export function part1Solver(input: number[]): number {
  * @param {number[]} input An array that represents the puzzle's input.
  * @returns {number} The solution to Part 2 of the puzzle!
  */
-export function part2Solver(input: number[]): number {
-    return null;
+export function part2Solver(input: Input): number {
+    return -1;
 }

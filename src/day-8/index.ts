@@ -79,7 +79,24 @@ export function processFile(file: string): Input {
  * @returns {number} The solution to Part 1 of the puzzle!
  */
 export function part1Solver(input: Input): number {
-    return -1;
+    const uniqueSegments: { [key: number]: true } = {
+        2: true,
+        3: true,
+        4: true,
+        7: true,
+    };
+
+    let uniqueSegmentsCount = 0;
+
+    for (const [_signalPatterns, digits] of input) {
+        for (const digit of digits) {
+            if (uniqueSegments[digit.length]) {
+                uniqueSegmentsCount += 1;
+            }
+        }
+    }
+
+    return uniqueSegmentsCount;
 }
 
 /**

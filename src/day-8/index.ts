@@ -69,7 +69,7 @@ export function processFile(file: string): Input {
 
         input.push(entry);
     }
-    console.log(input);
+
     return input;
 }
 

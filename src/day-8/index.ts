@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+import { join } from "path/posix";
 
 import { green } from "../utilities";
 
@@ -106,4 +107,31 @@ export function part1Solver(input: Input): number {
  */
 export function part2Solver(input: Input): number {
     return -1;
+}
+
+/**
+ * This functions sorts a string alphabetically.
+ * @param {string} unsorted A (potentially) unsorted string.
+ * @returns {string} A string sorted alphabetically.
+ */
+function sortAlphabetically(unsorted: string): string {
+    return unsorted.split("").sort().join("");
+}
+
+/**
+ * This function converts a pattern into the corresponding binary
+ * representation as a string.
+ * @param {string} pattern A signal pattern.
+ * @returns {string} A binary representation of the given string.
+ */
+function convertToBinaryString(pattern: string): string {
+    return [
+        Number(pattern.includes("a")),
+        Number(pattern.includes("b")),
+        Number(pattern.includes("c")),
+        Number(pattern.includes("d")),
+        Number(pattern.includes("e")),
+        Number(pattern.includes("f")),
+        Number(pattern.includes("g")),
+    ].join("");
 }

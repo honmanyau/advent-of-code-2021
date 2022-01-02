@@ -20,11 +20,17 @@ export const CLOSE_COMPLEMENTS = {
     "}": "{",
     ">": "<",
 };
-export const SCORES = {
+export const SCORES_PART1 = {
     ")": 3,
     "]": 57,
     "}": 1197,
     ">": 25137,
+};
+export const SCORES_PART2 = {
+    ")": 1,
+    "]": 2,
+    "}": 3,
+    ">": 4,
 };
 
 // ==========
@@ -78,7 +84,7 @@ export function part1Solver(input: string[]): number {
         const corruptionCheckResult = checkForCorruption(line);
 
         if (corruptionCheckResult !== null) {
-            score += SCORES[corruptionCheckResult as CloseCharacter];
+            score += SCORES_PART1[corruptionCheckResult as CloseCharacter];
         }
     }
 
@@ -91,7 +97,26 @@ export function part1Solver(input: string[]): number {
  * @returns {number} The solution to Part 2 of the puzzle!
  */
 export function part2Solver(input: string[]): number {
-    return -1;
+    let scores = [];
+
+    for (const line of input) {
+        const incompletionCheckResult = checkForIncompletion(line);
+
+        if (incompletionCheckResult !== null) {
+            let score = 0;
+
+            for (const character of incompletionCheckResult) {
+                score *= 5;
+                score += SCORES_PART2[character as CloseCharacter];
+            }
+
+            scores.push(score);
+        }
+    }
+
+    scores.sort((a, b) => a - b);
+
+    return scores[Math.floor(scores.length / 2)];
 }
 
 /**

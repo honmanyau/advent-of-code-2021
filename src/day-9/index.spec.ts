@@ -141,10 +141,89 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 2`, () => {
     });
 
     describe(`for the exmaple input`, () => {
-        it(`should return ???`, () => {
+        it(`should return 1134`, () => {
             const solution = part2Solver(example);
 
-            assert.strictEqual(solution, "");
+            assert.strictEqual(solution, 1134);
         });
     });
+
+    describe(`for the input [[0, 1, 1], [1, 0, 1], [1, 1, 0]]`, () => {
+        it(`should return 1`, () => {
+            const solution = part2Solver([
+                [0, 1, 1],
+                [1, 0, 1],
+                [1, 1, 0],
+            ]);
+
+            assert.strictEqual(solution, 1);
+        });
+    });
+
+    describe(`for the input [[3, 9, 9], [9, 3, 9], [9, 9, 3]]`, () => {
+        it(`should return 1`, () => {
+            const solution = part2Solver([
+                [0, 9, 9],
+                [9, 0, 9],
+                [9, 9, 0],
+            ]);
+
+            assert.strictEqual(solution, 1);
+        });
+    });
+
+    describe(`for the input [[0, 0, 9], [9, 1, 0], [0, 9, 0]]`, () => {
+        it(`should return 2`, () => {
+            const solution = part2Solver([
+                [0, 9, 9],
+                [9, 1, 0],
+                [0, 9, 9],
+            ]);
+
+            assert.strictEqual(solution, 2);
+        });
+    });
+
+    describe(`for the input [[0, 0, 9], [9, 1, 0], [0, 9, 0]]`, () => {
+        it(`should return 4`, () => {
+            const solution = part2Solver([
+                [0, 1, 9],
+                [9, 9, 0],
+                [0, 1, 9],
+            ]);
+
+            assert.strictEqual(solution, 4);
+        });
+    });
+
+    describe(`for the input [[9, 0, 9], [0, 9, 1], [9, 1, 0]]`, () => {
+        it(`should return 3`, () => {
+            const solution = part2Solver([
+                [9, 0, 9],
+                [0, 9, 1],
+                [9, 1, 0],
+            ]);
+
+            assert.strictEqual(solution, 3);
+        });
+    });
+
+    describe(
+        [
+            `for the input`,
+            ` [[0, 1, 9, 0], [1, 9, 9, 9], [9, 9, 2, 1], [0, 9, 1, 0]]`,
+        ].join(""),
+        () => {
+            it(`should return 12`, () => {
+                const solution = part2Solver([
+                    [0, 1, 9, 0],
+                    [1, 9, 9, 9],
+                    [9, 9, 2, 1],
+                    [0, 9, 1, 0],
+                ]);
+
+                assert.strictEqual(solution, 12);
+            });
+        }
+    );
 });

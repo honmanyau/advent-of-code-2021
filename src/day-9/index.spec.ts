@@ -148,12 +148,12 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 2`, () => {
         });
     });
 
-    describe(`for the input [[0, 1, 1], [1, 0, 1], [1, 1, 0]]`, () => {
+    describe(`for the input [[0, 9, 9], [9, 0, 9], [9, 9, 0]]`, () => {
         it(`should return 1`, () => {
             const solution = part2Solver([
-                [0, 1, 1],
-                [1, 0, 1],
-                [1, 1, 0],
+                [0, 9, 9],
+                [9, 0, 9],
+                [9, 9, 0],
             ]);
 
             assert.strictEqual(solution, 1);
@@ -163,9 +163,9 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 2`, () => {
     describe(`for the input [[3, 9, 9], [9, 3, 9], [9, 9, 3]]`, () => {
         it(`should return 1`, () => {
             const solution = part2Solver([
-                [0, 9, 9],
-                [9, 0, 9],
-                [9, 9, 0],
+                [3, 9, 9],
+                [9, 3, 9],
+                [9, 9, 3],
             ]);
 
             assert.strictEqual(solution, 1);

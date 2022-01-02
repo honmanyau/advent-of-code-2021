@@ -120,7 +120,7 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
 // == Part 2 ==
 // ============
 describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 2`, () => {
-    let example: any; // Refer to Day-2's solution for a typed example.
+    let example: any;
 
     beforeEach(() => {
         example = JSON.parse(stringifiedExample);

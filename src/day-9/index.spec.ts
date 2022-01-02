@@ -58,18 +58,18 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
     });
 
     describe(`for the input [[3, 4, 5], [9, 0, 9], [5, 4, 3]]`, () => {
-        it(`should return 1`, () => {
+        it(`should return 9`, () => {
             const solution = part1Solver([
                 [3, 4, 5],
                 [9, 0, 9],
                 [5, 4, 3],
             ]);
 
-            assert.strictEqual(solution, 1);
+            assert.strictEqual(solution, 9);
         });
     });
 
-    describe(`for the input [[8,8,8], [4,2,4], [8,8,8]]`, () => {
+    describe(`for the input [[8, 8, 8], [4, 2, 4], [8, 8, 8]]`, () => {
         it(`should return 3`, () => {
             const solution = part1Solver([
                 [8, 8, 8],
@@ -81,7 +81,7 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
         });
     });
 
-    describe(`for the input [[0,1,1], [1,1,1], [1,1,1]]`, () => {
+    describe(`for the input [[0, 1, 1], [1, 1, 1], [1, 1, 1]]`, () => {
         it(`should return 1`, () => {
             const solution = part1Solver([
                 [0, 1, 1],
@@ -93,7 +93,7 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
         });
     });
 
-    describe(`for the input [[0,1,1], [1,0,1], [1,1,1]]`, () => {
+    describe(`for the input [[0, 1, 1], [1, 0, 1], [1, 1, 1]]`, () => {
         it(`should return 2`, () => {
             const solution = part1Solver([
                 [0, 1, 1],
@@ -105,7 +105,7 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
         });
     });
 
-    describe(`for the input [[0,1,1], [1,0,1], [1,0,1]]`, () => {
+    describe(`for the input [[0, 1, 1], [1, 0, 1], [1, 0, 1]]`, () => {
         it(`should return 1`, () => {
             const solution = part1Solver([
                 [0, 1, 1],
@@ -117,7 +117,7 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
         });
     });
 
-    describe(`for the input [[0,1,0], [1,1,1], [0,1,0]]`, () => {
+    describe(`for the input [[0, 1, 0], [1, 1, 1], [0, 1, 0]]`, () => {
         it(`should return 4`, () => {
             const solution = part1Solver([
                 [0, 1, 0],

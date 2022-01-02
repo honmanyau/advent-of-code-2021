@@ -9,6 +9,7 @@ import {
     processFile,
     part1Solver,
     part2Solver,
+    checkForCorruption,
 } from "./index";
 
 const examplePathname = path.resolve(__dirname, "./example.txt");
@@ -19,7 +20,7 @@ const stringifiedExample = JSON.stringify(processFile(exampleFile));
 // == Part 1 ==
 // ============
 describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
-    let example: any; // Refer to Day-2's solution for a typed example.
+    let example: any;
 
     beforeEach(() => {
         example = JSON.parse(stringifiedExample);
@@ -38,7 +39,7 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
 // == Part 2 ==
 // ============
 describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 2`, () => {
-    let example: any; // Refer to Day-2's solution for a typed example.
+    let example: any;
 
     beforeEach(() => {
         example = JSON.parse(stringifiedExample);
@@ -51,4 +52,49 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 2`, () => {
             assert.strictEqual(solution, "");
         });
     });
+});
+
+// ===============
+// == Functions ==
+// ===============
+describe(`The function checkForCorruption()`, () => {
+    const validLines = [
+        "()",
+        "[]",
+        "{}",
+        "<>",
+        "([])",
+        "{()()()}",
+        "<([{}])>,",
+        "[<>({}){}[([])<>]]",
+        "(((((((((())))))))))",
+    ];
+
+    for (const line of validLines) {
+        describe(`for the input "${line}"`, () => {
+            it(`should not be considered corrupted or incomplete`, () => {
+                const solution = checkForCorruption(line);
+
+                assert.strictEqual(solution, null);
+            });
+        });
+    }
+
+    const corruptedLines = [
+        ["(]", "]"],
+        ["{()>", ">"],
+        ["{()()()>", ">"],
+        ["((((())))}", "}"],
+        ["<([]){()}[{}])", ")"],
+    ];
+
+    for (const [line, firstIllegalChar] of corruptedLines) {
+        describe(`for the input "${line}"`, () => {
+            it(`should not be considered corrupted or incomplete`, () => {
+                const solution = checkForCorruption(line);
+
+                assert.strictEqual(solution, firstIllegalChar);
+            });
+        });
+    }
 });

@@ -68,7 +68,18 @@ export function part1Solver(input: number[][]): number {
  * @returns {number} The solution to Part 2 of the puzzle!
  */
 export function part2Solver(input: number[][]): number {
-    return -1;
+    const lowPoints = findLowPoints(input);
+    const basinSizes = [];
+
+    for (const [y, x] of lowPoints) {
+        const basinSize = getBasinSize([y, x], input);
+
+        basinSizes.push(basinSize);
+    }
+
+    basinSizes.sort((a, b) => b - a);
+
+    return basinSizes[0] * basinSizes[1] * basinSizes[2];
 }
 
 /**
@@ -115,4 +126,48 @@ function findLowPoints(input: number[][]) {
     }
 
     return lowPoints;
+}
+
+/**
+ * This function gets the size of the basin for a given low point.
+ * @param {[ number, number]} point The (y, x) coordinates of a low poitn.
+ * @param {number[][]} input An array that represents the puzzle's input.
+ * @returns {number} The size of the basin.
+ */
+function getBasinSize([y, x]: [number, number], input: number[][]): number {
+    const queue = [[y, x]];
+    const memo = Array.from({ length: input.length }).map(() => {
+        return Array.from({ length: input[0].length }).map(() => 0);
+    });
+    let basinSize = 1;
+
+    while (queue.length > 0) {
+        const [y, x] = queue.shift();
+        const currentHeight = input[y][x];
+        const neighbours = [
+            [y, x - 1],
+            [y, x + 1],
+            [y - 1, x],
+            [y + 1, x],
+        ];
+
+        for (const [adjacentY, adjacentX] of neighbours) {
+            if (memo[adjacentY] && memo[adjacentY][adjacentX] === 0) {
+                const adjacentHeight = input[adjacentY][adjacentX];
+
+                if (
+                    adjacentHeight !== undefined &&
+                    adjacentHeight !== 9 &&
+                    adjacentHeight > currentHeight
+                ) {
+                    queue.push([adjacentY, adjacentX]);
+                    memo[adjacentY][adjacentX] = 1;
+
+                    basinSize += 1;
+                }
+            }
+        }
+    }
+
+    return basinSize;
 }

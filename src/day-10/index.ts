@@ -119,3 +119,12 @@ export function checkForCorruption(line: string): string | null {
 
     return null;
 }
+
+/**
+ * This function checks whether or not a line is incomplete.
+ * @param {string} line The line to be checked.
+ * @returns {string | null}  The first illegal character or otherwise null.
+ */
+export function checkForIncompletion(line: string): string | null {
+    return null;
+}

@@ -8,6 +8,18 @@ import { green } from "../utilities";
 // ============
 export const DAY_NUM = 10;
 export const CHALLENGE_TITLE = "Syntax Scoring";
+export const OPEN_COMPLEMENTS = {
+    "(": ")",
+    "[": "]",
+    "{": "}",
+    "<": ">",
+};
+export const CLOSE_COMPLEMENTS = {
+    ")": "(",
+    "]": "[",
+    "}": "{",
+    ">": "<",
+};
 
 // ==========
 // == Main ==
@@ -28,6 +40,11 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
         ].join("\n")
     );
 }
+
+// ===========
+// == Types ==
+// ===========
+type OpenCharacter = "(" | "[" | "{" | "<";
 
 // ===============
 // == Functions ==
@@ -66,5 +83,22 @@ export function part2Solver(input: string[]): number {
  * @returns {string | null}  The first illegal character or otherwise null.
  */
 export function checkForCorruption(line: string): string | null {
+    const stack: OpenCharacter[] = [];
+
+    for (const character of line) {
+        const complement = OPEN_COMPLEMENTS[character as OpenCharacter];
+
+        if (complement !== undefined) {
+            stack.push(character as OpenCharacter);
+        } else {
+            const topOfStack = stack.pop();
+            const expectedComplement = OPEN_COMPLEMENTS[topOfStack];
+
+            if (character !== expectedComplement) {
+                return character;
+            }
+        }
+    }
+
     return null;
 }

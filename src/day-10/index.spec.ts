@@ -172,7 +172,7 @@ describe(`The function checkForIncompletion()`, () => {
         ["<{([{{}}[<[[[<>{}]]]>[]]", "])}>"],
     ];
 
-    for (const [line, expectedResult] of corruptedLines) {
+    for (const [line, expectedResult] of incompleteLines) {
         describe(`for the input "${line}"`, () => {
             it(`should not be considered corrupted or incomplete`, () => {
                 const solution = checkForIncompletion(line);

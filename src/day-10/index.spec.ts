@@ -27,12 +27,35 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
     });
 
     describe(`for the exmaple input`, () => {
-        it(`should return ???`, () => {
+        it(`should return 26397`, () => {
             const solution = part1Solver(example);
 
-            assert.strictEqual(solution, "");
+            assert.strictEqual(solution, 26397);
         });
     });
+
+    const exampleWithScorePerLine: [string, number][] = [
+        ["[({(<(())[]>[[{[]{<()<>>", 0],
+        ["[(()[<>])]({[<{<<[]>>(", 0],
+        ["{([(<{}[<>[]}>{[]{[(<()>", 1197],
+        ["(((({<>}<{<{<>}{[]{[]{}", 0],
+        ["[[<[([]))<([[{}[[()]]]", 3],
+        ["[{[{({}]{}}([{[{{{}}([]", 57],
+        ["{<[[]]>}<{[{[{[]{()[[[]", 0],
+        ["[<(<(<(<{}))><([]([]()", 3],
+        ["<{([([[(<>()){}]>(<<{{", 25137],
+        ["<{([{{}}[<[[[<>{}]]]>[]]", 0],
+    ];
+
+    for (const [line, score] of exampleWithScorePerLine) {
+        describe(`for the exmaple input`, () => {
+            it(`should return ${score}`, () => {
+                const solution = part1Solver([line]);
+
+                assert.strictEqual(solution, score);
+            });
+        });
+    }
 });
 
 // ============

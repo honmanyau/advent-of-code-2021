@@ -20,6 +20,12 @@ export const CLOSE_COMPLEMENTS = {
     "}": "{",
     ">": "<",
 };
+export const SCORES = {
+    ")": 3,
+    "]": 57,
+    "}": 1197,
+    ">": 25137,
+};
 
 // ==========
 // == Main ==
@@ -45,6 +51,7 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
 // == Types ==
 // ===========
 type OpenCharacter = "(" | "[" | "{" | "<";
+type CloseCharacter = ")" | "]" | "}" | ">";
 
 // ===============
 // == Functions ==
@@ -65,7 +72,17 @@ export function processFile(file: string): string[] {
  * @returns {number} The solution to Part 1 of the puzzle!
  */
 export function part1Solver(input: string[]): number {
-    return null;
+    let score = 0;
+
+    for (const line of input) {
+        const corruptionCheckResult = checkForCorruption(line);
+
+        if (corruptionCheckResult !== null) {
+            score += SCORES[corruptionCheckResult as CloseCharacter];
+        }
+    }
+
+    return score;
 }
 
 /**

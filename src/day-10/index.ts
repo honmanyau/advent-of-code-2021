@@ -59,3 +59,12 @@ export function part1Solver(input: string[]): number {
 export function part2Solver(input: string[]): number {
     return null;
 }
+
+/**
+ * This function checks whether or not a line is corrupted.
+ * @param {string} line The line to be checked.
+ * @returns {string | null}  The first illegal character or otherwise null.
+ */
+export function checkForCorruption(line: string): string | null {
+    return null;
+}

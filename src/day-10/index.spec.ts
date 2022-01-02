@@ -10,6 +10,7 @@ import {
     part1Solver,
     part2Solver,
     checkForCorruption,
+    checkForIncompletion,
 } from "./index";
 
 const examplePathname = path.resolve(__dirname, "./example.txt");
@@ -117,6 +118,66 @@ describe(`The function checkForCorruption()`, () => {
                 const solution = checkForCorruption(line);
 
                 assert.strictEqual(solution, firstIllegalChar);
+            });
+        });
+    }
+});
+
+describe(`The function checkForIncompletion()`, () => {
+    const validLines = [
+        "()",
+        "[]",
+        "{}",
+        "<>",
+        "([])",
+        "{()()()}",
+        "<([{}])",
+        "[<>({}){}[([])<>]]",
+        "(((((((((())))))))))",
+    ];
+
+    for (const line of validLines) {
+        describe(`for the input "${line}"`, () => {
+            it(`should not be considered corrupted or incomplete`, () => {
+                const solution = checkForIncompletion(line);
+
+                assert.strictEqual(solution, null);
+            });
+        });
+    }
+
+    const corruptedLines = [
+        "(]",
+        "{()>",
+        "{()()()>",
+        "((((())))}",
+        "<([]){()}[{}])",
+    ];
+
+    for (const line of corruptedLines) {
+        describe(`for the input "${line}"`, () => {
+            it(`should not be considered corrupted or incomplete`, () => {
+                const solution = checkForIncompletion(line);
+
+                assert.strictEqual(solution, null);
+            });
+        });
+    }
+
+    const incompleteLines = [
+        ["[({(<(())[]>[[{[]{<()<>>", "}}]])})]"],
+        ["[(()[<>])]({[<{<<[]>>(", ")}>]})"],
+        ["(((({<>}<{<{<>}{[]{[]{}", "}}>}>))))"],
+        ["{<[[]]>}<{[{[{[]{()[[[]", "]]}}]}]}>"],
+        ["<{([{{}}[<[[[<>{}]]]>[]]", "])}>"],
+    ];
+
+    for (const [line, expectedResult] of corruptedLines) {
+        describe(`for the input "${line}"`, () => {
+            it(`should not be considered corrupted or incomplete`, () => {
+                const solution = checkForIncompletion(line);
+
+                assert.strictEqual(solution, expectedResult);
             });
         });
     }

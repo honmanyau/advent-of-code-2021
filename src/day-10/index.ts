@@ -126,5 +126,32 @@ export function checkForCorruption(line: string): string | null {
  * @returns {string | null}  The first illegal character or otherwise null.
  */
 export function checkForIncompletion(line: string): string | null {
-    return null;
+    const stack: OpenCharacter[] = [];
+
+    for (const character of line) {
+        const complement = OPEN_COMPLEMENTS[character as OpenCharacter];
+
+        if (complement !== undefined) {
+            stack.push(character as OpenCharacter);
+        } else {
+            const topOfStack = stack.pop();
+            const expectedComplement = OPEN_COMPLEMENTS[topOfStack];
+            const isCorruptedLine = character !== expectedComplement;
+
+            if (isCorruptedLine) {
+                return null;
+            }
+        }
+    }
+
+    const isValidLine = stack.length === 0;
+
+    if (isValidLine) {
+        return null;
+    }
+
+    return stack
+        .reverse()
+        .map((character: OpenCharacter) => OPEN_COMPLEMENTS[character])
+        .join("");
 }

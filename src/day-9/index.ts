@@ -38,8 +38,11 @@ if (process.env.SOLVE && process.env.SOLVE.toLowerCase() === "true") {
  * @param {string} file A challenge file read in as a string.
  * @returns {number[]} An array where each line is an entry of the challenge.
  */
-export function processFile(file: string): string[] {
-    return file.trim().split("\n");
+export function processFile(file: string): number[][] {
+    return file
+        .trim()
+        .split("\n")
+        .map((line) => line.split("").map(Number));
 }
 
 /**
@@ -47,7 +50,7 @@ export function processFile(file: string): string[] {
  * @param {number[]} input An array that represents the puzzle's input.
  * @returns {number} The solution to Part 1 of the puzzle!
  */
-export function part1Solver(input: string[]): number {
+export function part1Solver(input: number[][]): number {
     return -1;
 }
 
@@ -56,6 +59,6 @@ export function part1Solver(input: string[]): number {
  * @param {number[]} input An array that represents the puzzle's input.
  * @returns {number} The solution to Part 2 of the puzzle!
  */
-export function part2Solver(input: string[]): number {
+export function part2Solver(input: number[][]): number {
     return -1;
 }

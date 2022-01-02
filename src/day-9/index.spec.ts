@@ -33,65 +33,97 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 1`, () => {
         });
     });
 
-    describe(`for the input [ "111", "111", "111" ]`, () => {
+    describe(`for the input [[1, 1, 1], [1, 1, 1], [1, 1, 1]]`, () => {
         it(`should return 0`, () => {
-            const solution = part1Solver(["111", "111", "111"]);
+            const solution = part1Solver([
+                [1, 1, 1],
+                [1, 1, 1],
+                [1, 1, 1],
+            ]);
 
             assert.strictEqual(solution, 0);
         });
     });
 
-    describe(`for the input [ "111", "101", "111" ]`, () => {
+    describe(`for the input [[1, 1, 1], [1, 0, 1], [1, 1, 1]]`, () => {
         it(`should return 1`, () => {
-            const solution = part1Solver(["111", "101", "111"]);
+            const solution = part1Solver([
+                [1, 1, 1],
+                [1, 0, 1],
+                [1, 1, 1],
+            ]);
 
             assert.strictEqual(solution, 1);
         });
     });
 
-    describe(`for the input [ "345", "909", "543" ]`, () => {
+    describe(`for the input [[3, 4, 5], [9, 0, 9], [5, 4, 3]]`, () => {
         it(`should return 1`, () => {
-            const solution = part1Solver(["345", "909", "543"]);
+            const solution = part1Solver([
+                [3, 4, 5],
+                [9, 0, 9],
+                [5, 4, 3],
+            ]);
 
             assert.strictEqual(solution, 1);
         });
     });
 
-    describe(`for the input [ "888", "424", "888" ]`, () => {
+    describe(`for the input [[8,8,8], [4,2,4], [8,8,8]]`, () => {
         it(`should return 3`, () => {
-            const solution = part1Solver(["888", "424", "888"]);
+            const solution = part1Solver([
+                [8, 8, 8],
+                [4, 2, 4],
+                [8, 8, 8],
+            ]);
 
             assert.strictEqual(solution, 3);
         });
     });
 
-    describe(`for the input [ "011", "111", "111" ]`, () => {
+    describe(`for the input [[0,1,1], [1,1,1], [1,1,1]]`, () => {
         it(`should return 1`, () => {
-            const solution = part1Solver(["011", "111", "111"]);
+            const solution = part1Solver([
+                [0, 1, 1],
+                [1, 1, 1],
+                [1, 1, 1],
+            ]);
 
             assert.strictEqual(solution, 1);
         });
     });
 
-    describe(`for the input [ "011", "101", "111" ]`, () => {
+    describe(`for the input [[0,1,1], [1,0,1], [1,1,1]]`, () => {
         it(`should return 2`, () => {
-            const solution = part1Solver(["011", "101", "111"]);
+            const solution = part1Solver([
+                [0, 1, 1],
+                [1, 0, 1],
+                [1, 1, 1],
+            ]);
 
             assert.strictEqual(solution, 2);
         });
     });
 
-    describe(`for the input [ "011", "101", "101" ]`, () => {
+    describe(`for the input [[0,1,1], [1,0,1], [1,0,1]]`, () => {
         it(`should return 1`, () => {
-            const solution = part1Solver(["011", "101", "101"]);
+            const solution = part1Solver([
+                [0, 1, 1],
+                [1, 0, 1],
+                [1, 0, 1],
+            ]);
 
             assert.strictEqual(solution, 1);
         });
     });
 
-    describe(`for the input [ "010", "111", "010" ]`, () => {
+    describe(`for the input [[0,1,0], [1,1,1], [0,1,0]]`, () => {
         it(`should return 4`, () => {
-            const solution = part1Solver(["010", "111", "010"]);
+            const solution = part1Solver([
+                [0, 1, 0],
+                [1, 1, 1],
+                [0, 1, 0],
+            ]);
 
             assert.strictEqual(solution, 4);
         });

@@ -70,10 +70,50 @@ describe(`The solver for Day ${DAY_NUM}: ${CHALLENGE_TITLE}, Part 2`, () => {
     });
 
     describe(`for the exmaple input`, () => {
-        it(`should return ???`, () => {
+        it(`should return 288957`, () => {
             const solution = part2Solver(example);
 
-            assert.strictEqual(solution, "");
+            assert.strictEqual(solution, 288957);
+        });
+    });
+
+    describe(`for the exmaple input "[({(<(())[]>[[{[]{<()<>>"`, () => {
+        it(`should return 288957`, () => {
+            const solution = part2Solver(["[({(<(())[]>[[{[]{<()<>>"]);
+
+            assert.strictEqual(solution, 288957);
+        });
+    });
+
+    describe(`for the exmaple input "[(()[<>])]({[<{<<[]>>("`, () => {
+        it(`should return 5566`, () => {
+            const solution = part2Solver(["[(()[<>])]({[<{<<[]>>("]);
+
+            assert.strictEqual(solution, 5566);
+        });
+    });
+
+    describe(`for the exmaple input "(((({<>}<{<{<>}{[]{[]{}"`, () => {
+        it(`should return 1480781`, () => {
+            const solution = part2Solver(["(((({<>}<{<{<>}{[]{[]{}"]);
+
+            assert.strictEqual(solution, 1480781);
+        });
+    });
+
+    describe(`for the exmaple input "{<[[]]>}<{[{[{[]{()[[[]"`, () => {
+        it(`should return 995444`, () => {
+            const solution = part2Solver(["{<[[]]>}<{[{[{[]{()[[[]"]);
+
+            assert.strictEqual(solution, 995444);
+        });
+    });
+
+    describe(`for the exmaple input "<{([{{}}[<[[[<>{}]]]>[]]"`, () => {
+        it(`should return 294`, () => {
+            const solution = part2Solver(["<{([{{}}[<[[[<>{}]]]>[]]"]);
+
+            assert.strictEqual(solution, 294);
         });
     });
 });
